@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
-import spinner from '../images/loading.gif';
+import spinner from '../../../assets/images/loading.gif';
 import {useState} from 'react';
 //import {loadOptions} from '@babel/core';
 //import {Transition} from 'react-native-reanimated';
