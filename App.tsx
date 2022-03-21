@@ -10,25 +10,26 @@
 
 import React from 'react';
 import {Router, Scene} from 'react-native-router-flux';
-import LoginScreen from './src/views/login/LoginScreen';
+import goalSettingScreen from './src/views/goalSetting/GoalSettingScreen';
+//import LoginScreen from './src/views/login/LoginScreen';
 
 const App = () => {
   return (
     <Router>
       <Scene key="root">
-        <Scene
+        {/* <Scene
           key="loginScreen"
           component={LoginScreen}
           animation="fade"
           hideNavBar={true}
           initial={true}
-        />
-        {/* <Scene
-          key="secondScreen"
-          component={SecondScreen}
+        /> */}
+        <Scene
+          key="goalSettingScreen"
+          component={goalSettingScreen}
           animation="fade"
           hideNavBar={true}
-        /> */}
+        />
       </Scene>
     </Router>
   );
