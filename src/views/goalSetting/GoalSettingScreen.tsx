@@ -63,24 +63,44 @@ const styles = StyleSheet.create({
 
 //1. 목표우선순위 정하기 라는 과정이 총 몇단계인지 알것 -> 진행되는 과정에따라 프로그래스가 차올라야 함
 //2. 밑에 뜨는 추천 단어는 back에서 최근 단어를 받아서 뿌리는 방식으로 진행해야 할듯
-    //얘네는 button형
 //3. 선택되면 테두리박스에 추가가 되도록 해야함
 //4. 1개 이상을 선택하면 제일 하단에 다골랐어요 버튼이 떠야함
-const data = {
-    item1: {
-        text: '👻 책읽기'
+
+//내가 고른 단어가 순서대로 올라가야함
+//다시 같은 단어 누르면 삭제?
+const data = [
+    {
+        title: '👻 책읽기'
     },
-    item2: {
-        text: '👻 다이어트'
-    }
-}
+    {
+        title: '👻 다이어트'
+    },
+    {
+        title: '👻 공부'
+    },
+    {
+        title: '👻 독서'
+    },
+    {
+        title: '👻 아직'
+    },
+]
+
+//const map = new Map<string, string>();
+//map.set('')
 
 export default function GoalSettingScreen() { 
     const [selectedText1, setSelectedText1] = useState<string>('');
     const [selectedText2, setSelectedText2] = useState<string>('');
     const [selectedText3, setSelectedText3] = useState<string>('');
 
-    //해당 프로그레스바는 목표우선순위의 진행률을 나타내는듯.
+    // const render = () => { 
+    //     data.map(element => {
+    //         console.log(element);
+    //         return (<SimpleTouchableOpacity text={element} onPress={() => {setSelectedText1(element)}} />)
+    //     });
+    // }
+    //해당 프로그레스바는 목표우선순위의 진행률9을 나타내는듯.
     return (
         <View style={styles.container}>
             <View style={styles.progressbar}><Progress.Bar progress={0.5} width={280} height={30} /></View>
@@ -110,15 +130,14 @@ export default function GoalSettingScreen() {
 
             {/* 추천되는 단어갯수만큼 map */}
             <View style={styles.test}>
-                
-                <SimpleTouchableOpacity text={data.item1.text} onPress={() => {setSelectedText1(data.item1.text)}} />
-                <SimpleTouchableOpacity text={data.item2.text} onPress={() => { }} />
-                <SimpleTouchableOpacity text={'👻 공부'} onPress={() => { }} />
-                <SimpleTouchableOpacity text={'👻 독서'} onPress={() => { }} />
-                <SimpleTouchableOpacity text={'👻 아직'} onPress={() => { }} />
+                {
+                    data.map(element => {
+                        console.log(element);
+                        return (<SimpleTouchableOpacity text={element.title} onPress={() => {setSelectedText1(element.title)}} />)
+                    })
+                }
             </View>
             
-
             <TouchableOpacity style={{height: 40,backgroundColor: 'blue',marginTop:70,width:300,justifyContent: "center",alignItems: "center"}}>
                 <Text style={{fontSize:25, color:'white',alignItems:'center'}}> 다 골랐어요! </Text>
             </TouchableOpacity>
