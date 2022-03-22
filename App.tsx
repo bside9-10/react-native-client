@@ -70,7 +70,7 @@ const App = () => {
       </Scene>
     </Router>
   );
-};
+}
 
 // const styles = StyleSheet.create({
 //   sectionContainer: {
