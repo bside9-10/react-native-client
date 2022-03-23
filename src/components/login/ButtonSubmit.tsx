@@ -1,5 +1,4 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
 import {Dimensions} from 'react-native';
 import {
   StyleSheet,
@@ -14,11 +13,8 @@ import {Actions} from 'react-native-router-flux';
 
 import spinner from '../../../assets/images/loading.gif';
 import {useState} from 'react';
-//import {loadOptions} from '@babel/core';
-//import {Transition} from 'react-native-reanimated';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
-//const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
 
 export default function ButtonSubmit() {
@@ -32,7 +28,7 @@ export default function ButtonSubmit() {
     }
 
     setLoadingStatus(true);
-    //({toValue = 1, duration = 200, easing = Easing.linear, useNativeDriver = true}) =>
+
     Animated.timing(buttonAnimated, {
       toValue: 1,
       duration: 200,

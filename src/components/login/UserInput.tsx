@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, TextInput, ImageBackground} from 'react-native';
 import {Dimensions} from 'react-native';
-//import PropTypes from 'prop-types';
 
 const UserInput: React.FunctionComponent<UserInputPropTypes> = props => {
   return (
@@ -12,7 +11,6 @@ const UserInput: React.FunctionComponent<UserInputPropTypes> = props => {
         placeholder={props.placeholder}
         secureTextEntry={props.secureTextEntry}
         autoCorrect={props.autoCorrect}
-        //returnKeyType={props.returnKeyType}
         placeholderTextColor="white"
         underlineColorAndroid="transparent"
       />

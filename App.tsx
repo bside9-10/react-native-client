@@ -23,12 +23,6 @@ const App = () => {
           hideNavBar={true}
           initial={true}
         />
-        {/* <Scene
-          key="secondScreen"
-          component={SecondScreen}
-          animation="fade"
-          hideNavBar={true}
-        /> */}
       </Scene>
     </Router>
   );
