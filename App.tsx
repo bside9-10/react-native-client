@@ -9,8 +9,10 @@
  */
 
 import React from 'react';
+
 import {Router, Scene} from 'react-native-router-flux';
 import LoginScreen from './src/views/login/LoginScreen';
+
 
 const App = () => {
   return (
@@ -26,6 +28,6 @@ const App = () => {
       </Scene>
     </Router>
   );
-};
+}
 
 export default App;
