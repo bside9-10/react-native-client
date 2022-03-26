@@ -9,24 +9,24 @@
  */
 
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { NavigationContainer } from '@react-navigation/native';
+import RootStack from './src/views/RootStack';
+// import { Router, Scene } from 'react-native-router-flux';
+// import LoginScreen from './src/views/login/LoginScreen';
+// import goalScreen from './src/views/goal/GoalSettingScreen';
+// import testScreen from './src/views/goal/Test';
 
-import {Router, Scene} from 'react-native-router-flux';
-import LoginScreen from './src/views/login/LoginScreen';
 
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <Router>
-      <Scene key="root">
-        <Scene
-          key="loginScreen"
-          component={LoginScreen}
-          animation="fade"
-          hideNavBar={true}
-          initial={true}
-        />
-      </Scene>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <RootStack />
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 
