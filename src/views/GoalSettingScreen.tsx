@@ -1,25 +1,9 @@
 import React, { useState } from 'react';
 import {View, Text, TouchableOpacity,StyleSheet} from 'react-native';
 import { useQuery} from 'react-query';
-// import { QueryClient, QueryClientProvider } from 'react-query';
-import SimpleTouchableOpacity from '../../components/goal/SimpleTouchableOpacity';
-import ProgressBar from '../../components/goal/ProgressBar'
-// import { IRecommendWords } from '../../helper/types';
-import getRecommendWordsApi from '../../helper/api/recommendWordsAPI';
-
-// const SampleAPI = () => { 
-//    const result = useQuery('title', getApi);
-//   // const result2 = useQuery('title', getMethod<IRecommendWords>(IRecommendWords.getData(''), '/url'));
-//   const { data, error, isLoading } = result;
-
-//   if (isLoading) return <Text>로딩 중..</Text>
-//   if (error) return <Text>오류발생</Text>
-  
-//   console.log(data);
-
-//   return (
-//    );
-// }
+import SimpleTouchableOpacity from '../components/goal/SimpleTouchableOpacity';
+import ProgressBar from '../components/goal/ProgressBar'
+import getRecommendWordsApi from '../helper/api/recommendWordsAPI';
 
 
 const GoalSettingScreen = () => {
@@ -47,7 +31,6 @@ const GoalSettingScreen = () => {
         <Text style={styles.text2}>(최대 3개)</Text>
       </View>
 
-      {/* 선택되는 키워드가 여기에 떠야 함 */}
       <View style={styles.box}>
         <Text>{selectedText1}</Text>
       </View>
@@ -142,22 +125,4 @@ const styles = StyleSheet.create({
     width: 300,
   },
 });
-
-// const data = [
-//   {
-//     title: '👻 책읽기',
-//   },
-//   {
-//     title: '👻 다이어트',
-//   },
-//   {
-//     title: '👻 공부',
-//   },
-//   {
-//     title: '👻 독서',
-//   },
-//   {
-//     title: '👻 아직',
-//   },
-// ];
 

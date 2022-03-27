@@ -8,8 +8,8 @@ interface PropTypes {
 }
 
 const SimpleTouchableOpacity = (props: PropTypes) => {
-  // const [text, setText] = useState<string>('');
-  const {onPress, text} = props; // 구조분해 할당
+  
+  const {onPress, text} = props;
 
   return (
     <SafeAreaView>

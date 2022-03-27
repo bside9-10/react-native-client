@@ -11,12 +11,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { NavigationContainer } from '@react-navigation/native';
-import RootStack from './src/views/RootStack';
-// import { Router, Scene } from 'react-native-router-flux';
-// import LoginScreen from './src/views/login/LoginScreen';
-// import goalScreen from './src/views/goal/GoalSettingScreen';
-// import testScreen from './src/views/goal/Test';
-
+import RootStack from './src/views/navigator/RootStack';
 
 const queryClient = new QueryClient();
 

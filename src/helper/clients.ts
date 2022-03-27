@@ -8,8 +8,6 @@
 
 import axios from 'axios';
 
-/* 임시 */
-// http://133.186.146.120:8080/api/v1/goals
 const baseURL = 'http://133.186.146.120:8080';
 
 const client = axios.create({baseURL});
