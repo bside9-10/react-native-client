@@ -1,6 +1,3 @@
-/**
- * Sample
- */
 import {AxiosError} from 'axios';
 
 type SampleErrorData = {
