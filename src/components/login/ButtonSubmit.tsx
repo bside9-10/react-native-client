@@ -1,6 +1,7 @@
-import React from 'react';
-import {Dimensions} from 'react-native';
-import {
+/* eslint-disable no-unused-expressions */
+// 임시처리
+import React, {useState} from 'react';
+import {Dimensions,
   StyleSheet,
   TouchableOpacity,
   Text,
@@ -9,53 +10,51 @@ import {
   Image,
   View,
 } from 'react-native';
-import {Actions} from 'react-native-router-flux';
 
 import spinner from '../../../assets/images/loading.gif';
-import {useState} from 'react';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const MARGIN = 40;
 
-export default function ButtonSubmit() {
+const ButtonSubmit = () => {
   const [loadingStatus, setLoadingStatus] = useState(false);
   const [buttonAnimated, setButtonAnimated] = useState(new Animated.Value(0));
   const [growAnimated, setGrowAnimated] = useState(new Animated.Value(0));
 
-  const onPress = () => {
-    if (loadingStatus) {
-      return;
-    }
+  // const onPress = () => {
+  //   if (loadingStatus) {
+  //     return;
+  //   }
 
-    setLoadingStatus(true);
+  //   setLoadingStatus(true);
 
-    Animated.timing(buttonAnimated, {
-      toValue: 1,
-      duration: 200,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    }).start;
+  //   Animated.timing(buttonAnimated, {
+  //     toValue: 1,
+  //     duration: 200,
+  //     easing: Easing.linear,
+  //     useNativeDriver: true,
+  //   }).start;
 
-    setTimeout(() => {
-      onGrow();
-    }, 2000);
+  //   setTimeout(() => {
+  //     onGrow();
+  //   }, 2000);
 
-    setTimeout(() => {
-      Actions.secondScreen();
-      setLoadingStatus(false);
-      setButtonAnimated(new Animated.Value(0));
-      setGrowAnimated(new Animated.Value(0));
-    }, 2300);
-  };
+  //   setTimeout(() => {
+  //     Actions.secondScreen();
+  //     setLoadingStatus(false);
+  //     setButtonAnimated(new Animated.Value(0));
+  //     setGrowAnimated(new Animated.Value(0));
+  //   }, 2300);
+  // };
 
-  const onGrow = () => {
-    Animated.timing(growAnimated, {
-      toValue: 1,
-      duration: 200,
-      easing: Easing.linear,
-      useNativeDriver: true,
-    }).start();
-  };
+  // const onGrow = () => {
+  //   Animated.timing(growAnimated, {
+  //     toValue: 1,
+  //     duration: 200,
+  //     easing: Easing.linear,
+  //     useNativeDriver: true,
+  //   }).start();
+  // };
 
   const changeWidth = buttonAnimated.interpolate({
     inputRange: [0, 1],
@@ -71,7 +70,7 @@ export default function ButtonSubmit() {
       <Animated.View style={{width: changeWidth}}>
         <TouchableOpacity
           style={styles.button}
-          onPress={onPress}
+          onPress={() => console.log()}
           activeOpacity={1}>
           {loadingStatus ? (
             <Image source={spinner} style={styles.image} />
@@ -86,6 +85,8 @@ export default function ButtonSubmit() {
     </View>
   );
 }
+
+export default ButtonSubmit;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,17 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text, ImageBackground} from 'react-native';
 
 import logoImg from '../../../assets/images/logo.png';
 
-export default class Logo extends Component {
-  render() {
+const Logo = () => {
     return (
       <View style={styles.container}>
         <ImageBackground source={logoImg} style={styles.image} />
         <Text style={styles.text}>REACT NATIVE</Text>
       </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -31,3 +29,5 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
+
+export default Logo;
