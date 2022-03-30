@@ -10,23 +10,18 @@
 
 import React from 'react';
 
-import {Router, Scene} from 'react-native-router-flux';
 import LoginScreen from './src/views/login/LoginScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <Router>
-      <Scene key="root">
-        <Scene
-          key="loginScreen"
-          component={LoginScreen}
-          animation="fade"
-          hideNavBar={true}
-          initial={true}
-        />
-      </Scene>
-    </Router>
+    <NavigationContainer>{
+      <Stack.Navigator>
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      </Stack.Navigator>}</NavigationContainer>
   );
 }
 
