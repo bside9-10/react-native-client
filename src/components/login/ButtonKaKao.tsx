@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-expressions */
-// 임시처리
-import React, {useState} from 'react';
+import React from 'react';
 import {
   StyleSheet,
   TouchableOpacity,

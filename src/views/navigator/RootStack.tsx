@@ -1,11 +1,14 @@
 import React from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp} from '@react-navigation/native-stack';
-import { KakaoOAuthToken, KakaoProfile } from '@react-native-seoul/kakao-login';
+import { KakaoProfile } from '@react-native-seoul/kakao-login';
+import { AppleRequestResponse } from '@invertase/react-native-apple-authentication';
 import GoalScreen from '../GoalSettingScreen';
 import TestScreen from '../TestSreen'
 import MainTab from './MainTab'
 import LoginScreen from '../LoginScreen';
 import ProfileScreen from '../ProfileScreen';
+import ProfileScreen2 from '../ProfileScreen2';
+
 
 // TODO: 추가되는 화면을 Type에 추가하여야 함
 type RootStackParamList = {
@@ -13,7 +16,8 @@ type RootStackParamList = {
     GoalScreen: undefined;
     LoginScreen: undefined;
     MainTab: undefined;
-    ProfileScreen: {userProfile : KakaoProfile};
+    ProfileScreen: { userProfile: KakaoProfile };
+    ProfileScreen2: { userProfile2 : AppleRequestResponse};
 }
 
 export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -47,6 +51,11 @@ const RootStack = () => {
                 <Stack.Screen
                     name='ProfileScreen'
                     component={ProfileScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='ProfileScreen2'
+                    component={ProfileScreen2}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

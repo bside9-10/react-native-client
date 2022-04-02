@@ -1,6 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, TextInput, ImageBackground} from 'react-native';
-import {Dimensions} from 'react-native';
+import {StyleSheet, View, TextInput, ImageBackground,Dimensions} from 'react-native';
 
 const UserInput: React.FunctionComponent<UserInputPropTypes> = props => {
   return (
@@ -28,7 +27,7 @@ interface UserInputPropTypes {
 }
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
-//const DEVICE_HEIGHT = Dimensions.get('window').height;
+// const DEVICE_HEIGHT = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   input: {

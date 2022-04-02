@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-expressions */
-// 임시처리
 import React, {useState} from 'react';
 import {Dimensions,
   StyleSheet,
   TouchableOpacity,
   Text,
   Animated,
-  Easing,
   Image,
   View,
 } from 'react-native';
