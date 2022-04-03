@@ -8,6 +8,7 @@ import MainTab from './MainTab'
 import LoginScreen from '../LoginScreen';
 import ProfileScreen from '../ProfileScreen';
 import ProfileScreen2 from '../ProfileScreen2';
+import ProfileScreen3 from '../ProfileScreen3';
 
 
 // TODO: 추가되는 화면을 Type에 추가하여야 함
@@ -17,7 +18,8 @@ type RootStackParamList = {
     LoginScreen: undefined;
     MainTab: undefined;
     ProfileScreen: { userProfile: KakaoProfile };
-    ProfileScreen2: { userProfile2 : AppleRequestResponse};
+    ProfileScreen2: { userProfile2: AppleRequestResponse };
+    ProfileScreen3: { userProfile3 : any};
 }
 
 export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -56,6 +58,11 @@ const RootStack = () => {
                 <Stack.Screen
                     name='ProfileScreen2'
                     component={ProfileScreen2}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                    name='ProfileScreen3'
+                    component={ProfileScreen3}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>

@@ -36,6 +36,10 @@ static void InitializeFlipper(UIApplication *application) {
     return [RNKakaoLogins handleOpenUrl: url];
  }
 
+//  if(){
+//    return GIDSignIn.sharedInstance.handle(url);
+//  }
+
  return NO;
 }
  

@@ -7,6 +7,7 @@ import Wallpaper from '../components/login/Wallpaper';
 import ButtonSubmit from '../components/login/ButtonSubmit';
 import ButtonKaKao from '../components/login/ButtonKaKao';
 import ButtonApple from '../components/login/ButtonApple';
+import ButtonGoogle from '../components/login/ButtonGoogle';
 
 const LoginScreen = () => {
   // const navigation = useNavigation<RootStackNavigationProp>();
@@ -17,6 +18,7 @@ const LoginScreen = () => {
       <Form />
 
       <ButtonSubmit />
+      <ButtonGoogle />
       <ButtonApple />
       <ButtonKaKao />
     </Wallpaper>

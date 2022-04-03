@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const ProfileScreen2 = () => { 
+const ProfileScreen3 = () => { 
     const route = useRoute();
 
     return(
@@ -12,7 +12,7 @@ const ProfileScreen2 = () => {
     );
 }
 
-export default ProfileScreen2;
+export default ProfileScreen3;
 
 const styles = StyleSheet.create({
     container: {
