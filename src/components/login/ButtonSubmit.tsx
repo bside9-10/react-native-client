@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -9,10 +9,10 @@ import {
   Image,
   View,
 } from 'react-native';
-import {Actions} from 'react-native-router-flux';
+// import {Actions} from 'react-native-router-flux';
 
 import spinner from '../../../assets/images/loading.gif';
-import {useState} from 'react';
+import { useState } from 'react';
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const MARGIN = 40;
@@ -41,7 +41,7 @@ export default function ButtonSubmit() {
     }, 2000);
 
     setTimeout(() => {
-      Actions.secondScreen();
+      // Actions.secondScreen();
       setLoadingStatus(false);
       setButtonAnimated(new Animated.Value(0));
       setGrowAnimated(new Animated.Value(0));
@@ -68,7 +68,7 @@ export default function ButtonSubmit() {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={{width: changeWidth}}>
+      <Animated.View style={{ width: changeWidth }}>
         <TouchableOpacity
           style={styles.button}
           onPress={onPress}
@@ -80,7 +80,7 @@ export default function ButtonSubmit() {
           )}
         </TouchableOpacity>
         <Animated.View
-          style={[styles.circle, {transform: [{scale: changeScale}]}]}
+          style={[styles.circle, { transform: [{ scale: changeScale }] }]}
         />
       </Animated.View>
     </View>
