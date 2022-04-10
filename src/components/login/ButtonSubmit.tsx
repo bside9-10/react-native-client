@@ -9,7 +9,6 @@ import {
   Image,
   View,
 } from 'react-native';
-// import {Actions} from 'react-native-router-flux';
 
 import spinner from '../../../assets/images/loading.gif';
 import { useState } from 'react';
@@ -41,7 +40,6 @@ export default function ButtonSubmit() {
     }, 2000);
 
     setTimeout(() => {
-      // Actions.secondScreen();
       setLoadingStatus(false);
       setButtonAnimated(new Animated.Value(0));
       setGrowAnimated(new Animated.Value(0));

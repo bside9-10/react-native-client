@@ -9,7 +9,7 @@ import UserInput from './UserInput';
 import usernameImg from '../../../assets/images/username.png';
 import passwordImg from '../../../assets/images/password.png';
 import eyeImg from '../../../assets/images/eye_black.png';
-import {useState} from 'react';
+import { useState } from 'react';
 
 const Form = () => {
   const [showPass, setShowPass] = useState(true);

@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, TextInput, ImageBackground} from 'react-native';
-import {Dimensions} from 'react-native';
+import { StyleSheet, View, TextInput, ImageBackground } from 'react-native';
+import { Dimensions } from 'react-native';
 
 const UserInput: React.FunctionComponent<UserInputPropTypes> = props => {
   return (

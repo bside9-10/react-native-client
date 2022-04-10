@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, TouchableOpacity, Text} from 'react-native';
+import { SafeAreaView, TouchableOpacity, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 interface PropTypes {
@@ -8,8 +8,8 @@ interface PropTypes {
 }
 
 const SimpleTouchableOpacity = (props: PropTypes) => {
-  
-  const {onPress, text} = props;
+
+  const { onPress, text } = props;
 
   return (
     <SafeAreaView>

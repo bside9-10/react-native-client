@@ -1,5 +1,5 @@
-import {useMutation} from 'react-query';
-import {SampleError} from '../api/apiTypes';
+import { useMutation } from 'react-query';
+import { SampleError } from '../api/apiTypes';
 
 // 주로 데이터의 수정, 삭제, 생성할때 쓰이는 custom hook
 export default function useSampleMutation() {

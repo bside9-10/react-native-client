@@ -4,24 +4,24 @@ import { Text } from "react-native-svg";
 
 const Tab = createBottomTabNavigator();
 
-const ListScreen = () => { 
+const ListScreen = () => {
     return <Text>라플리스트</Text>
 }
 
-const TodayPlanScreen = () => { 
+const TodayPlanScreen = () => {
     return <Text>오늘의플랜</Text>
 }
 
-const MyPageScreen = () => { 
+const MyPageScreen = () => {
     return <Text>마이페이지</Text>
 }
 
-const MainTab = () => { 
+const MainTab = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="ListScreen" component={ListScreen} />
             <Tab.Screen name="TodayPlanScreen" component={TodayPlanScreen} />
-            <Tab.Screen name="MyPageScreen" component={MyPageScreen}/>
+            <Tab.Screen name="MyPageScreen" component={MyPageScreen} />
         </Tab.Navigator>
     );
 }
