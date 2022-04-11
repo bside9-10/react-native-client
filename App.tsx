@@ -9,19 +9,19 @@
  */
 
 import React from 'react';
-
-import LoginScreen from './src/views/login/LoginScreen';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RootStack from './src/views/navigator/RootStack';
 
-const Stack = createNativeStackNavigator();
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <NavigationContainer>{
-      <Stack.Navigator>
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      </Stack.Navigator>}</NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <RootStack />
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 
