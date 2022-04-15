@@ -23,7 +23,8 @@ const ButtonApple = () => {
         navigation.navigate('ProfileScreen2', { userProfile2: appleAuthRequestResponse });
         // use credentialState response to ensure the user is authenticated
         if (credentialState === appleAuth.State.AUTHORIZED) {
-            console.log('user is authenticated');
+          console.log('user is authenticated');
+          console.log(`identityToken : ${appleAuthRequestResponse.identityToken}`);
         }
     }
     useEffect(() => {

@@ -28,7 +28,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => { 
     return (
-            <Stack.Navigator initialRouteName='LoginScreen'>
+            <Stack.Navigator initialRouteName='MainTab'>
                 {/* TODO : 화면 추가 */}
                 <Stack.Screen
                     name='MainTab'

@@ -3,7 +3,8 @@ import {SafeAreaView, TouchableOpacity, Text} from 'react-native';
 import PropTypes from 'prop-types';
 
 interface PropTypes {
-  onPress: () => void;
+  // eslint-disable-next-line react/require-default-props
+  onPress ?: () => void;
   text: string;
 }
 
@@ -16,8 +17,12 @@ const SimpleTouchableOpacity = (props: PropTypes) => {
       <TouchableOpacity
         onPress={onPress}
         style={{
+          backgroundColor : '#C4C4C4',
+          width:50,
           height: 33,
-          borderColor: 'blue',
+          borderColor: 'black',
+          marginTop: 10,
+          marginLeft:30,
           borderRadius: 18,
           borderWidth: 1.3,
           alignItems: 'center',
