@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { TouchableOpacity , SafeAreaView, View, Text, StyleSheet, Image, useWindowDimensions, Dimensions } from 'react-native'
-import RNBounceable from "@freakycoder/react-native-bounceable";
-import AutoHeightImage from "react-native-auto-height-image";
-import checkBoxMenuImg from '../../../assets/images/checkBoxMenu.png'
+import { TouchableOpacity , SafeAreaView, Text, StyleSheet, Dimensions } from 'react-native'
 import SimpleTouchableOpacity from './SimpleTouchableOpacity';
 import ModalView from '../ModalView';
 
@@ -16,9 +13,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const CustomCheckbox = (props : PropTypes) => { 
-  // const bouncyCheckboxRef: BouncyCheckbox | null = null;
-  // const [checkboxState, setCheckboxState] = React.useState(false);
-  // const { width } = useWindowDimensions(); 
+  
   const [modalVisible, setModalVisible] = useState(false);
   
   const { toDos, date } = props;
@@ -38,23 +33,10 @@ const CustomCheckbox = (props : PropTypes) => {
       <SimpleTouchableOpacity text="운동" />
         {/* 체크박스 프레임 */}
         <TouchableOpacity activeOpacity={1}
-          // onPress={onPress}
-          style={{
-            backgroundColor : '#FFFFFF',
-            width: windowWidth-65,
-            height: 70,
-            borderColor: 'black',
-            marginTop: 10,
-            marginLeft: 30,
-            paddingLeft : 20,
-            borderRadius: 18,
-            borderWidth: 1,
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-          }}>
+          style={styles.checkboxFrame}>
             {/* 체크박스 */}
-        <BouncyCheckbox
-              style= {{paddingTop: 25}}
+            <BouncyCheckbox
+              style= {styles.checkbox}
               size={25}
               fillColor="red"
               unfillColor="#FFFFFF"
@@ -62,18 +44,10 @@ const CustomCheckbox = (props : PropTypes) => {
               iconStyle={{ borderColor: "red" }}
               onPress={(isChecked: boolean) => { console.log("ss") }}
             />
-            <Text style={{
-                color: '#000000',
-                paddingLeft: 40
-            }}>{date}</Text>
-
+            <Text style={styles.text}>{date}</Text>
             {/* 메뉴 버튼 */}
             <ModalView text="다음 날로 미루기 !" contents="d"/>
-            {/* <TouchableOpacity onPress={onPress}>
-              <AutoHeightImage source={checkBoxMenuImg} width={28} style={{position: 'absolute', right: -150, top:-20}} />
-            </TouchableOpacity> */}
-      </TouchableOpacity>
-     
+        </TouchableOpacity>
       </SafeAreaView>
   );
 }
@@ -81,10 +55,24 @@ const CustomCheckbox = (props : PropTypes) => {
 export default CustomCheckbox;
 
 const styles = StyleSheet.create({
-  bottomText : {
-    
+  checkboxFrame: {
+    backgroundColor : '#FFFFFF',
+    width: windowWidth-65,
+    height: 70,
+    borderColor: 'black',
+    marginTop: 10,
+    marginLeft: 30,
+    paddingLeft : 20,
+    borderRadius: 18,
+    borderWidth: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
   },
-  viewStyle: {
-    
+  checkbox: {
+    paddingTop: 25
+  },
+  text: {
+    color: '#000000',
+    paddingLeft: 40
   }
 });

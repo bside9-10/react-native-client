@@ -1,46 +1,28 @@
-import React, { useState } from 'react';
-import { Button, StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
-
-import { SwipeablePanel } from 'rn-swipeable-panel';
+import React from 'react';
+import { StyleSheet, View, SafeAreaView, ScrollView, Dimensions } from 'react-native';
 import CustomCheckbox from '../components/goal/CustomCheckBox';
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const TodayLaffleScreen = () => { 
-    const [panelProps, setPanelProps] = useState({
-        fullWidth: true,
-        openLarge: true,
-        showCloseButton: true,
-        onClose: () => closePanel(),
-        onPressCloseButton: () => closePanel(),
-       
-        smallPanelHeight: 11,
-        onlySmall: true,
-        scrollViewProps: {},
-        closeOnTouchOutside : true
-      });
-      const [isPanelActive, setIsPanelActive] = useState(true);
-      
-    
-      const openPanel = () => {
-        setIsPanelActive(true);
-      };
-    
-      const closePanel = () => {
-        setIsPanelActive(false);
-      };
+    // console.log(windowHeight);
     
     return (
         <SafeAreaView>
-            <View style={styles.container}>
-                <Button title="눌러바" onPress={openPanel} />
-                <Text style={styles.welcome}>Welcome to React Native!</Text>
-                <Text style={styles.instructions}>To get started, edit App.js</Text>
-                {/* marginHorizontal: 10, */}
-                <ScrollView style={{top:100, backgroundColor : "white", }}>
-                {/* <SwipeablePanel {...panelProps} isActive={isPanelActive}> */}
-                  <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" />  
-                {/* </SwipeablePanel> */}
-                </ScrollView>
-            </View>
+          <View>                
+            <ScrollView style={styles.scrollView}>
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" />  
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" />  
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" />  
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" />  
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" /> 
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" /> 
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" /> 
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" /> 
+              <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" /> 
+            </ScrollView>
+          </View>
         </SafeAreaView>
     );
 };
@@ -48,7 +30,12 @@ const TodayLaffleScreen = () => {
 export default TodayLaffleScreen;
 
 const styles = StyleSheet.create({
-    container: {},
-    welcome: {},
-    instructions: {}
+  scrollView: {
+    top: (windowHeight / 4.72) ,
+    height: (windowHeight),
+    backgroundColor: "white",
+    borderTopLeftRadius: 45,
+    borderTopRightRadius: 45,
+    // marginHorizontal: 10
+  }
 })
