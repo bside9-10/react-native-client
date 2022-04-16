@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { Button, StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
 
 import { SwipeablePanel } from 'rn-swipeable-panel';
 import CustomCheckbox from '../components/goal/CustomCheckBox';
@@ -34,9 +34,12 @@ const TodayLaffleScreen = () => {
                 <Button title="눌러바" onPress={openPanel} />
                 <Text style={styles.welcome}>Welcome to React Native!</Text>
                 <Text style={styles.instructions}>To get started, edit App.js</Text>
-                <SwipeablePanel {...panelProps} isActive={isPanelActive}>
+                {/* marginHorizontal: 10, */}
+                <ScrollView style={{top:100, backgroundColor : "white", }}>
+                {/* <SwipeablePanel {...panelProps} isActive={isPanelActive}> */}
                   <CustomCheckbox toDos="오늘 뭐하지" date="매주금요일" />  
-                </SwipeablePanel>
+                {/* </SwipeablePanel> */}
+                </ScrollView>
             </View>
         </SafeAreaView>
     );

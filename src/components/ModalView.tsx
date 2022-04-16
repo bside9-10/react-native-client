@@ -19,6 +19,7 @@ const ModalView = (props : PropType) => {
   return (
     <View style={styles.centeredView}>
       <Modal
+        
         animationType="fade"
         transparent
         visible={modalVisible}
