@@ -64,7 +64,7 @@ const ButtonSubmit = () => {
 
   return (
     <View style={styles.container}>
-      <Animated.View style={{width: changeWidth}}>
+      <Animated.View style={{ width: changeWidth }}>
         <TouchableOpacity
           style={styles.button}
           onPress={() => console.log()}
@@ -76,7 +76,7 @@ const ButtonSubmit = () => {
           )}
         </TouchableOpacity>
         <Animated.View
-          style={[styles.circle, {transform: [{scale: changeScale}]}]}
+          style={[styles.circle, { transform: [{ scale: changeScale }] }]}
         />
       </Animated.View>
     </View>

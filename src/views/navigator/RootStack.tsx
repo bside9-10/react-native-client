@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { KakaoProfile } from '@react-native-seoul/kakao-login';
 import { AppleRequestResponse } from '@invertase/react-native-apple-authentication';
+
 import GoalScreen from '../GoalSettingScreen';
 import TestScreen from '../TestSreen'
 import MainTab from './MainTab'
@@ -26,7 +27,7 @@ export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamLi
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-const RootStack = () => { 
+const RootStack = () => {
     return (
             <Stack.Navigator initialRouteName='MainTab'>
                 {/* TODO : 화면 추가 */}

@@ -5,21 +5,20 @@ import TodayLaffleScreen from '../TodayLaffleScreen';
 
 const Tab = createBottomTabNavigator();
 
-// 라플리스트 화면(view)를 여기에 넣으면 될 것으로 보임
-
 const ListScreen = () => {
     return <Text>마이페이지</Text>
 }
 
 const TodayPlanScreen = () => { 
     return <TodayLaffleScreen />
+
 }
 
-const MyPageScreen = () => { 
+const MyPageScreen = () => {
     return <Text>마이페이지</Text>
 }
 
-const MainTab = () => { 
+const MainTab = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="라플리스트" component={ListScreen}  options={{headerShown:false}}/>
