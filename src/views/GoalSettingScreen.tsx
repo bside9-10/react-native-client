@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {View, Text, TouchableOpacity,StyleSheet} from 'react-native';
-import { useQuery} from 'react-query';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useQuery } from 'react-query';
 import SimpleTouchableOpacity from '../components/goal/SimpleTouchableOpacity';
 import ProgressBar from '../components/goal/ProgressBar'
 import getRecommendWordsApi from '../helper/api/recommendWordsAPI';
@@ -11,7 +11,7 @@ const GoalSettingScreen = () => {
 
   const resultQuery = useQuery('recommendWords', getRecommendWordsApi);
 
-  if (!resultQuery.data) { 
+  if (!resultQuery.data) {
     return (
       <View style={styles.title1}>
         <Text style={styles.text}> 데이터가 없습니다. </Text>
@@ -61,7 +61,7 @@ const GoalSettingScreen = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Text style={{fontSize: 25, color: 'white', alignItems: 'center'}}>
+        <Text style={{ fontSize: 25, color: 'white', alignItems: 'center' }}>
           {' '}
           다 골랐어요!{' '}
         </Text>

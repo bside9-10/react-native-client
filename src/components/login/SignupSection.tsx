@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, Dimensions} from 'react-native';
-
+ 
 const SignupSection = () => {
   return (
     <View style={styles.container}>

@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import * as Progress from 'react-native-progress';
 
 const styles = StyleSheet.create({
@@ -10,8 +10,8 @@ const styles = StyleSheet.create({
     },
 });
 
-const ProgressBar = () => { 
-    return(
+const ProgressBar = () => {
+    return (
         <View style={styles.progressbar}>
             <Progress.Bar progress={0.5} width={280} height={30} />
         </View>
