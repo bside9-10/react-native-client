@@ -1,21 +1,7 @@
+/* eslint-disable react/no-unused-prop-types */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import {StyleSheet, View, TextInput, ImageBackground,Dimensions} from 'react-native';
-
-const UserInput: React.FunctionComponent<UserInputPropTypes> = props => {
-  return (
-    <View style={styles.inputWrapper}>
-      <ImageBackground source={props.source} style={styles.inlineImg} />
-      <TextInput
-        style={styles.input}
-        placeholder={props.placeholder}
-        secureTextEntry={props.secureTextEntry}
-        autoCorrect={props.autoCorrect}
-        placeholderTextColor="white"
-        underlineColorAndroid="transparent"
-      />
-    </View>
-  );
-};
 
 interface UserInputPropTypes {
   source: number;
@@ -25,6 +11,26 @@ interface UserInputPropTypes {
   autoCapitalize?: string;
   returnKeyType?: string;
 }
+
+
+const UserInput = (props: UserInputPropTypes) => {
+  const { source, placeholder, secureTextEntry, autoCorrect } = props;
+  
+  return (
+    <View style={styles.inputWrapper}>
+      <ImageBackground source={source} style={styles.inlineImg} />
+      <TextInput
+        style={styles.input}
+        placeholder={placeholder}
+        secureTextEntry={secureTextEntry}
+        autoCorrect={autoCorrect}
+        placeholderTextColor="white"
+        underlineColorAndroid="transparent"
+      />
+    </View>
+  );
+};
+
 
 const DEVICE_WIDTH = Dimensions.get('window').width;
 // const DEVICE_HEIGHT = Dimensions.get('window').height;

@@ -49,7 +49,7 @@ const RootStack = () => {
                     name='GoalScreen'
                     component={GoalScreen}
                     options={{ headerShown: false }}
-            />
+                />
                 <Stack.Screen
                     name='ProfileScreen'
                     component={ProfileScreen}

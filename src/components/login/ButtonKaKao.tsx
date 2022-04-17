@@ -11,7 +11,6 @@ import { useNavigation } from '@react-navigation/native';
 import kakaoBtnImage from '../../../assets/images/kakao-login.png';
 import { RootStackNavigationProp } from '../../views/navigator/RootStack';
 
-// const DEVICE_WIDTH = Dimensions.get('window').width;
 const MARGIN = 40;
 
 const ButtonKaKao = () => {

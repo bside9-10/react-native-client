@@ -3,7 +3,7 @@ import {StyleSheet, ImageBackground} from 'react-native';
 
 import bgSrc from '../../../assets/images/wallpaper.png';
 
- const Wallpaper = () => {
+ const Wallpaper = (props : any) => {
   return (
     <ImageBackground style={styles.picture} source={bgSrc} />
   );
