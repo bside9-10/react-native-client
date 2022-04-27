@@ -3,16 +3,19 @@ import Logo from '../components/login/Logo';
 import Form from '../components/login/Form';
 import Wallpaper from '../components/login/Wallpaper';
 import ButtonSubmit from '../components/login/ButtonSubmit';
-import SignupSection from '../components/login/SignupSection';
+import ButtonKaKao from '../components/login/ButtonKaKao';
+import ButtonApple from '../components/login/ButtonApple';
+import ButtonGoogle from '../components/login/ButtonGoogle';
 
 const LoginScreen = () => {
   return (
     <Wallpaper>
       <Logo />
       <Form />
-
       <ButtonSubmit />
-      <SignupSection />
+      <ButtonGoogle />
+      <ButtonApple />
+      <ButtonKaKao />
     </Wallpaper>
   );
 };

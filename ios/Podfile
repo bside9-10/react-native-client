@@ -15,6 +15,7 @@ target 'sideproject' do
   target 'sideprojectTests' do
     inherit! :complete
     # Pods for testing
+    pod 'KakaoSDK'
   end
 
   # Enables Flipper.

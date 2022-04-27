@@ -1,4 +1,11 @@
 PODS:
+  - Alamofire (5.5.0)
+  - AppAuth (1.5.0):
+    - AppAuth/Core (= 1.5.0)
+    - AppAuth/ExternalUserAgent (= 1.5.0)
+  - AppAuth/Core (1.5.0)
+  - AppAuth/ExternalUserAgent (1.5.0):
+    - AppAuth/Core
   - boost (1.76.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.67.3)
@@ -11,6 +18,56 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.67.3)
   - fmt (6.2.1)
   - glog (0.3.5)
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GTMAppAuth (1.2.2):
+    - AppAuth/Core (~> 1.4)
+    - GTMSessionFetcher/Core (~> 1.5)
+  - GTMSessionFetcher/Core (1.7.0)
+  - kakao-login (3.0.3):
+    - KakaoSDK (~> 2.4.0)
+    - KakaoSDKAuth (~> 2.4.0)
+    - KakaoSDKCommon (~> 2.4.0)
+    - KakaoSDKTalk (~> 2.4.0)
+    - KakaoSDKUser (~> 2.4.0)
+    - React
+  - KakaoSDK (2.4.1):
+    - KakaoSDKAuth (= 2.4.1)
+    - KakaoSDKCommon (= 2.4.1)
+    - KakaoSDKLink (= 2.4.1)
+    - KakaoSDKNavi (= 2.4.1)
+    - KakaoSDKStory (= 2.4.1)
+    - KakaoSDKTalk (= 2.4.1)
+    - KakaoSDKTemplate (= 2.4.1)
+    - KakaoSDKUser (= 2.4.1)
+  - KakaoSDKAuth (2.4.1):
+    - KakaoSDKCommon (= 2.4.1)
+  - KakaoSDKCommon (2.4.1):
+    - KakaoSDKCommon/Common (= 2.4.1)
+    - KakaoSDKCommon/Network (= 2.4.1)
+  - KakaoSDKCommon/Common (2.4.1)
+  - KakaoSDKCommon/Network (2.4.1):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.4.1)
+  - KakaoSDKLink (2.4.1):
+    - KakaoSDKCommon (= 2.4.1)
+    - KakaoSDKTemplate (= 2.4.1)
+  - KakaoSDKNavi (2.4.1):
+    - KakaoSDKCommon/Common (= 2.4.1)
+  - KakaoSDKStory (2.4.1):
+    - KakaoSDKAuth (= 2.4.1)
+    - KakaoSDKCommon (= 2.4.1)
+  - KakaoSDKTalk (2.4.1):
+    - KakaoSDKAuth (= 2.4.1)
+    - KakaoSDKCommon (= 2.4.1)
+    - KakaoSDKTemplate (= 2.4.1)
+  - KakaoSDKTemplate (2.4.1):
+    - KakaoSDKCommon/Common (= 2.4.1)
+  - KakaoSDKUser (2.4.1):
+    - KakaoSDKAuth (= 2.4.1)
+    - KakaoSDKCommon (= 2.4.1)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
     - DoubleConversion
@@ -280,11 +337,16 @@ PODS:
     - React-jsi (= 0.67.3)
     - React-logger (= 0.67.3)
     - React-perflogger (= 0.67.3)
+  - RNAppleAuthentication (2.1.5):
+    - React-Core
   - RNCAsyncStorage (1.17.0):
     - React-Core
-  - RNGestureHandler (2.3.2):
+  - RNGestureHandler (2.4.0):
     - React-Core
-  - RNReanimated (2.4.1):
+  - RNGoogleSignin (5.0.0):
+    - GoogleSignIn (~> 5.0.0)
+    - React-Core
+  - RNReanimated (2.7.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -292,7 +354,6 @@ PODS:
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
-    - React
     - React-callinvoker
     - React-Core
     - React-Core/DevSupport
@@ -327,6 +388,8 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - "kakao-login (from `../node_modules/@react-native-seoul/kakao-login`)"
+  - KakaoSDK
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -354,8 +417,10 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNAppleAuthentication (from `../node_modules/@invertase/react-native-apple-authentication`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -364,7 +429,21 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AppAuth
     - fmt
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
+    - KakaoSDK
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKLink
+    - KakaoSDKNavi
+    - KakaoSDKStory
+    - KakaoSDKTalk
+    - KakaoSDKTemplate
+    - KakaoSDKUser
 
 EXTERNAL SOURCES:
   boost:
@@ -377,6 +456,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  kakao-login:
+    :path: "../node_modules/@react-native-seoul/kakao-login"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -427,10 +508,14 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNAppleAuthentication:
+    :path: "../node_modules/@invertase/react-native-apple-authentication"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNGoogleSignin:
+    :path: "../node_modules/@react-native-community/google-signin"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -443,12 +528,27 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  AppAuth: 80317d99ac7ff2801a2f18ff86b48cd315ed465d
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   DoubleConversion: 831926d9b8bf8166fd87886c4abab286c2422662
   FBLazyVector: 808f741ddb0896a20e5b98cc665f5b3413b072e2
   FBReactNativeSpec: 94473205b8741b61402e8c51716dea34aa3f5b2f
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 85ecdd10ee8d8ec362ef519a6a45ff9aa27b2e85
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
+  GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
+  GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  kakao-login: c24578d477ed5c80b5f5e607c937f8dd36037de5
+  KakaoSDK: 1e80d6877c0eac6a310f93c73fb15ca56c05f2bd
+  KakaoSDKAuth: fcba1c9ede431683f5bdd84c835a96981cb115a5
+  KakaoSDKCommon: 0912aa0c7db051ae8dc07a35395cf644f7728f95
+  KakaoSDKLink: fe6f2ca19092836f8af2a9d7fabe60fd67740104
+  KakaoSDKNavi: c138bce799ebdac6811b56453de5326e49ca5925
+  KakaoSDKStory: cb33db9a04c7c44746b3662991234f52ab61961a
+  KakaoSDKTalk: 749828662e4ac7a9f17bb1664b58526da289d18c
+  KakaoSDKTemplate: 8bb288765bfc0195631da809b2d707f09495acdf
+  KakaoSDKUser: 11955811d99d1ff1f1dfd5428afe69937e31ccef
   RCT-Folly: 803a9cfd78114b2ec0f140cfa6fa2a6bafb2d685
   RCTRequired: 3c77b683474faf23920fbefc71c4e13af21470c0
   RCTTypeSafety: 720b1841260dac692444c2822b27403178da8b28
@@ -474,14 +574,16 @@ SPEC CHECKSUMS:
   React-RCTVibration: d0361f15ea978958fab7ffb6960f475b5063d83f
   React-runtimeexecutor: af1946623656f9c5fd64ca6f36f3863516193446
   ReactCommon: 650e33cde4fb7d36781cd3143f5276da0abb2f96
+  RNAppleAuthentication: 63c2127ace11985b94f852fc480eb84145653712
   RNCAsyncStorage: 4efdcd2f7378421b29467c9de58f43552b60cf5b
-  RNGestureHandler: 6e757e487a4834e7280e98e9bac66d2d9c575e9c
-  RNReanimated: 32c91e28f5780937b8efc07ddde1bab8d373fe0b
+  RNGestureHandler: 50e6ffee79932d14ea747d4ea4cc99aac0f24e86
+  RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
+  RNReanimated: 96ab42cfb0e5517293499e0f3f810420eb459f75
   RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
   Yoga: 90dcd029e45d8a7c1ff059e8b3c6612ff409061a
 
-PODFILE CHECKSUM: b0dc73228ec2d106d29e6e3c19888f8de527ca36
+PODFILE CHECKSUM: c2713aa3a1a9a1fe8f3408bb73b9cef67a1b55b0
 
 COCOAPODS: 1.11.3

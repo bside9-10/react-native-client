@@ -4,6 +4,9 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
+//kakao oauth
+#import <RNKakaoLogins.h>
+
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
 #import <FlipperKitLayoutPlugin/FlipperKitLayoutPlugin.h>
@@ -24,6 +27,22 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 
 @implementation AppDelegate
+
+//kakao oauth
+- (BOOL)application:(UIApplication *)app
+     openURL:(NSURL *)url
+     options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+ if([RNKakaoLogins isKakaoTalkLoginUrl:url]) {
+    return [RNKakaoLogins handleOpenUrl: url];
+ }
+
+//  if(){
+//    return GIDSignIn.sharedInstance.handle(url);
+//  }
+
+ return NO;
+}
+ 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -60,3 +79,5 @@ static void InitializeFlipper(UIApplication *application) {
 }
 
 @end
+
+
