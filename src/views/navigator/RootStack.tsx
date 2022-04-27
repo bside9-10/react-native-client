@@ -13,12 +13,16 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
     return (
-        <Stack.Navigator initialRouteName='MainTab'>
+        <Stack.Navigator
+            initialRouteName='MainTab'
+            screenOptions={{
+                headerShown: false
+            }}>
             <Stack.Screen
                 name='MainTab'
                 component={MainTab}
             />
-        </Stack.Navigator>
+        </Stack.Navigator >
     );
 }
 
