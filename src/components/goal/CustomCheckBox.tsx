@@ -30,7 +30,7 @@ const CustomCheckbox = (props : PropTypes) => {
   return (
     <SafeAreaView> 
       {/* 카테고리 */}
-      <SimpleTouchableOpacity text="운동" />
+      {/* <SimpleTouchableOpacity text="운동" /> */}
         {/* 체크박스 프레임 */}
         <TouchableOpacity activeOpacity={1}
           style={styles.checkboxFrame}>
