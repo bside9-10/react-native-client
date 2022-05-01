@@ -57,6 +57,7 @@ const CustomCheckbox = (props: PropTypes) => {
       {goalDetails.map((v, i) => {
         return (
           <TouchableOpacity
+            // eslint-disable-next-line react/no-array-index-key
             key={i}
             activeOpacity={1}
             style={styles.checkboxFrame}>
