@@ -8,9 +8,11 @@
 
 import axios from 'axios';
 
-const baseURL = 'http://133.186.146.120:8080';
+// const baseURL = 'http://133.186.146.120:8080';
+const baseURL = 'https://api.bside9-10-api.site';
+// https://api.bside9-10-api.site/api/v1/goals/2/today?date=20220425
 
-const client = axios.create({ baseURL });
+const client = axios.create({baseURL});
 
 // 로그인/회원가입 인증관련
 // export function applyToken(jwt: string) {
