@@ -83,6 +83,7 @@ const MyPageScreen = () => {
           <View style={{marginTop: 24, marginLeft: 24, marginRight: 24}}>
             <RoundView>
               <Image
+                // eslint-disable-next-line global-require
                 source={require('../../assets/images/character1.png')}
                 resizeMode="contain"
                 style={{margin: 20}}
@@ -90,6 +91,7 @@ const MyPageScreen = () => {
               <View>
                 <Text style={{marginTop: 17}}>레이블 1</Text>
                 <Image
+                  // eslint-disable-next-line global-require
                   source={require('../../assets/images/progressbar2.png')}
                   resizeMode="contain"
                   style={{marginTop: 9}}
@@ -100,6 +102,7 @@ const MyPageScreen = () => {
           <View style={{marginTop: 6, marginLeft: 24, marginRight: 24}}>
             <RoundView>
               <Image
+                // eslint-disable-next-line global-require
                 source={require('../../assets/images/character2.png')}
                 resizeMode="contain"
                 style={{margin: 20}}
@@ -107,6 +110,7 @@ const MyPageScreen = () => {
               <View>
                 <Text style={{marginTop: 17}}>레이블 2</Text>
                 <Image
+                  // eslint-disable-next-line global-require
                   source={require('../../assets/images/progressbar1.png')}
                   resizeMode="contain"
                   style={{marginTop: 9}}
@@ -117,6 +121,7 @@ const MyPageScreen = () => {
           <View style={{marginTop: 6, marginLeft: 24, marginRight: 24}}>
             <RoundView>
               <Image
+                // eslint-disable-next-line global-require
                 source={require('../../assets/images/character3.png')}
                 resizeMode="contain"
                 style={{margin: 20}}
@@ -124,6 +129,7 @@ const MyPageScreen = () => {
               <View>
                 <Text style={{marginTop: 17}}>레이블 2</Text>
                 <Image
+                  // eslint-disable-next-line global-require
                   source={require('../../assets/images/progressbar3.png')}
                   resizeMode="contain"
                   style={{marginTop: 9}}
@@ -134,6 +140,7 @@ const MyPageScreen = () => {
           <View style={{marginTop: 6, marginLeft: 24, marginRight: 24}}>
             <RoundView>
               <Image
+                // eslint-disable-next-line global-require
                 source={require('../../assets/images/character4.png')}
                 resizeMode="contain"
                 style={{margin: 20}}
@@ -141,6 +148,7 @@ const MyPageScreen = () => {
               <View>
                 <Text style={{marginTop: 17}}>레이블 2</Text>
                 <Image
+                  // eslint-disable-next-line global-require
                   source={require('../../assets/images/progressbar4.png')}
                   resizeMode="contain"
                   style={{marginTop: 9}}
