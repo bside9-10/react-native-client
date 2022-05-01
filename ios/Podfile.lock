@@ -378,6 +378,7 @@ PODS:
     - React-RCTImage
   - RNSVG (12.3.0):
     - React-Core
+
   - RNVectorIcons (9.1.0):
     - React-Core
   - Yoga (1.14.0)
