@@ -2,6 +2,8 @@ import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, View, Text } from "react-native";
 import TodayLaffleScreen from '../TodayLaffleScreen';
+// import MyPageScreen from '../MyPageScreen';
+import laffleListOff from '../../../assets/images/statuoff.png';
 
 const Tab = createBottomTabNavigator();
 
