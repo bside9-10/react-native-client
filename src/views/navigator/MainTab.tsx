@@ -24,7 +24,9 @@ const listIcon = (focused: boolean) => {
     <Image
       source={
         focused
+          // eslint-disable-next-line global-require
           ? require('../../../assets/images/laffleListOn.png')
+          // eslint-disable-next-line global-require
           : require('../../../assets/images/laffleListOff.png')
       }
       resizeMode="contain"
@@ -38,7 +40,9 @@ const todayLaffleIcon = (focused: boolean) => {
     <Image
       source={
         focused
+          // eslint-disable-next-line global-require
           ? require('../../../assets/images/todayLaffleOn.png')
+          // eslint-disable-next-line global-require
           : require('../../../assets/images/todayLaffleOff.png')
       }
       resizeMode="contain"
@@ -52,7 +56,9 @@ const mypageIcon = (focused: boolean) => {
     <Image
       source={
         focused
+          // eslint-disable-next-line global-require
           ? require('../../../assets/images/mypageOn.png')
+          // eslint-disable-next-line global-require
           : require('../../../assets/images/mypageOff.png')
       }
       resizeMode="contain"
@@ -100,6 +106,7 @@ const MainTab = () => {
           headerRight: () => (
             <Image
               style={{width: 24, height: 24, marginRight: 25}}
+              // eslint-disable-next-line global-require
               source={require('../../../assets/images/setting.png')}
             />
           ),
