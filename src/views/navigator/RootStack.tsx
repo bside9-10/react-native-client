@@ -29,7 +29,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
     return (
-            <Stack.Navigator initialRouteName='MainTab'>
+            // <Stack.Navigator initialRouteName='MainTab'>
+            // <Stack.Navigator initialRouteName='LoginScreen'>
+            <Stack.Navigator initialRouteName='ProfileScreen3'>
                 {/* TODO : 화면 추가 */}
                 <Stack.Screen
                     name='MainTab'
@@ -39,7 +41,7 @@ const RootStack = () => {
                 <Stack.Screen
                     name='LoginScreen'
                     component={LoginScreen}
-                    options={() => ({ title: 'LoginScreen'})}
+                    options={{headerShown:false}}
                 />
                 <Stack.Screen
                     name='TestScreen'
@@ -54,17 +56,17 @@ const RootStack = () => {
                 <Stack.Screen
                     name='ProfileScreen'
                     component={ProfileScreen}
-                    options={{ headerShown: false }}
+                    options={() => ({ title: '실천 가능 시간 입력'})}
                 />
                 <Stack.Screen
                     name='ProfileScreen2'
                     component={ProfileScreen2}
-                    options={{ headerShown: false }}
+                    options={{ headerShown: true }}
                 />
                 <Stack.Screen
                     name='ProfileScreen3'
                     component={ProfileScreen3}
-                    options={{ headerShown: false }}
+                    options={() => ({ title: '실천 가능 시간 입력'})}
                 />
             </Stack.Navigator>
     );

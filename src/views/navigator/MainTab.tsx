@@ -4,11 +4,12 @@ import { Image, View, Text } from "react-native";
 import TodayLaffleScreen from '../TodayLaffleScreen';
 // import MyPageScreen from '../MyPageScreen';
 import laffleListOff from '../../../assets/images/statuoff.png';
+import AvailableTime from "../AvailableTime";
 
 const Tab = createBottomTabNavigator();
 
 const ListScreen = () => {
-    return <Text>오늘라플</Text>
+    return <AvailableTime />
 }
 
 const TodayPlanScreen = () => { 
@@ -53,6 +54,17 @@ const mypageIcon = ( focused  : boolean) => {
 const MainTab = () => {
     return (
         <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
+            {/* test용 */}
+            <Tab.Screen name="가용시간" component={ListScreen} options={{
+                headerShown: true,
+                // eslint-disable-next-line react/no-unstable-nested-components
+                tabBarIcon: ({ focused }) => (
+                    <View style={{alignItems: 'center', justifyContent: 'center', top: 10}}>
+                        {listIcon(focused)}
+                    </View>
+                )
+            }} />
+
             <Tab.Screen name="라플리스트" component={ListScreen} options={{
                 headerShown: false,
                 // eslint-disable-next-line react/no-unstable-nested-components
