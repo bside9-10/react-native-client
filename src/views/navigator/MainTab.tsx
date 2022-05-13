@@ -129,6 +129,7 @@ const MainTab = () => {
         <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
             {/* test용 */}
             {/* <Tab.Screen name="가용시간" component={ListScreen} options={{
+
                 headerShown: true,
                 // eslint-disable-next-line react/no-unstable-nested-components
                 tabBarIcon: ({ focused }) => (
