@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react';
 
-import { View } from 'react-native';
+import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { AppleButton , appleAuth } from '@invertase/react-native-apple-authentication';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '../../views/navigator/RootStack';
+import appleButtonImage from '../../../assets/images/appleButton.png';
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const ButtonApple = () => {
     const navigation = useNavigation<RootStackNavigationProp>();
 
-    async function onAppleButtonPress() {
+  const onAppleButtonPress = async () => {
+    // async function onAppleButtonPress() {
          // performs login request
         const appleAuthRequestResponse = await appleAuth.performRequest({
         requestedOperation: appleAuth.Operation.LOGIN,
@@ -34,19 +38,35 @@ const ButtonApple = () => {
     }, []); 
     
   return (
-    <View>
-      <AppleButton
-        buttonStyle={AppleButton.Style.WHITE}
-        buttonType={AppleButton.Type.SIGN_IN}
-        style={{
-          width: 200, // You must specify a width
-          height: 45, // You must specify a height
-        }}
-        onPress={() => onAppleButtonPress()}
-      />
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={onAppleButtonPress}
+        activeOpacity={1}>
+        <Image source={appleButtonImage}/>
+      </TouchableOpacity>
     </View>
+    // <View>
+    //   <AppleButton
+    //     buttonStyle={AppleButton.Style.WHITE}
+    //     buttonType={AppleButton.Type.SIGN_IN}
+    //     style={{
+    //       width: 200, // You must specify a width
+    //       height: 45, // You must specify a height
+    //     }}
+    //     onPress={() => onAppleButtonPress()}
+    //   />
+    // </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    // top: (windowHeight /1.25),
+    alignItems: 'center',
+  
+  },
+})
 
 export default ButtonApple;
 

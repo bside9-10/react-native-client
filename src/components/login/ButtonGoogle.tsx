@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
 import { GoogleSignin, GoogleSigninButton, statusCodes } from '@react-native-community/google-signin';
 import { useNavigation } from '@react-navigation/native';
+import { Dimensions, StyleSheet, ImageBackground, Image, View, TouchableOpacity } from 'react-native';
 import { RootStackNavigationProp } from '../../views/navigator/RootStack';
+import googleButtonImage from '../../../assets/images/googleButton.png';
 
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const ButtonGoogle = () => { 
     const navigation = useNavigation<RootStackNavigationProp>();
@@ -38,14 +43,30 @@ const ButtonGoogle = () => {
         }
     };
 
-    return (
-        <GoogleSigninButton
-            style={{ width: 192, height: 48 }}
-            size={GoogleSigninButton.Size.Wide}
-            color={GoogleSigninButton.Color.Dark}
-            onPress={signIn}
-             />
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity
+        onPress={signIn}
+        activeOpacity={1}>
+        <Image source={googleButtonImage}/>
+      </TouchableOpacity>
+    </View>
+        // <GoogleSigninButton
+        // style={styles.googleButton}
+        // size={GoogleSigninButton.Size.Wide}
+        // color={GoogleSigninButton.Color.Dark}
+        // onPress={signIn}
+        // />
     );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    // top: (windowHeight /1.4),
+    alignItems: 'center',
+    marginBottom: 10
+  
+  },
+})
 
 export default ButtonGoogle;

@@ -80,4 +80,48 @@ const RootStack = () => {
   );
 };
 
+    // return (
+    //         // <Stack.Navigator initialRouteName='MainTab'>
+    //         // <Stack.Navigator initialRouteName='LoginScreen'>
+    //         <Stack.Navigator initialRouteName='ProfileScreen3'>
+    //             {/* TODO : 화면 추가 */}
+    //             <Stack.Screen
+    //                 name='MainTab'
+    //                 component={MainTab}
+    //                 options={{headerShown:false}}
+    //             />
+    //             <Stack.Screen
+    //                 name='LoginScreen'
+    //                 component={LoginScreen}
+    //                 options={{headerShown:false}}
+    //             />
+    //             <Stack.Screen
+    //                 name='TestScreen'
+    //                 component={TestScreen}
+    //                 options={() => ({ title: 'TestScreen'})}
+    //             />
+    //             <Stack.Screen
+    //                 name='GoalScreen'
+    //                 component={GoalScreen}
+    //                 options={{ headerShown: false }}
+    //             />
+    //             <Stack.Screen
+    //                 name='ProfileScreen'
+    //                 component={ProfileScreen}
+    //                 options={() => ({ title: '실천 가능 시간 입력'})}
+    //             />
+    //             <Stack.Screen
+    //                 name='ProfileScreen2'
+    //                 component={ProfileScreen2}
+    //                 options={{ headerShown: true }}
+    //             />
+    //             <Stack.Screen
+    //                 name='ProfileScreen3'
+    //                 component={ProfileScreen3}
+    //                 options={() => ({ title: '실천 가능 시간 입력'})}
+    //             />
+    //         </Stack.Navigator>
+    // );
+// }
+
 export default RootStack;
