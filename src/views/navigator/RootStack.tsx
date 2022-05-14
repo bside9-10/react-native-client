@@ -10,6 +10,7 @@ import LoginScreen from '../LoginScreen';
 import ProfileScreen from '../ProfileScreen';
 import ProfileScreen2 from '../ProfileScreen2';
 import ProfileScreen3 from '../ProfileScreen3';
+import OnboardingScreen from '../OnboardingScreen';
 
 
 // TODO: 추가되는 화면을 Type에 추가하여야 함
@@ -18,6 +19,7 @@ type RootStackParamList = {
     GoalScreen: undefined;
     LoginScreen: undefined;
     MainTab: undefined;
+    OnboardingScreen : undefined;
     ProfileScreen: { userProfile: KakaoProfile };
     ProfileScreen2: { userProfile2: AppleRequestResponse };
     ProfileScreen3: { userProfile3 : any};
@@ -31,11 +33,16 @@ const RootStack = () => {
     return (
             // <Stack.Navigator initialRouteName='MainTab'>
             // <Stack.Navigator initialRouteName='LoginScreen'>
-            <Stack.Navigator initialRouteName='ProfileScreen3'>
+            <Stack.Navigator initialRouteName='OnboardingScreen'>
                 {/* TODO : 화면 추가 */}
                 <Stack.Screen
                     name='MainTab'
                     component={MainTab}
+                    options={{headerShown:false}}
+                />
+                <Stack.Screen
+                    name='OnboardingScreen'
+                    component={OnboardingScreen}
                     options={{headerShown:false}}
                 />
                 <Stack.Screen
