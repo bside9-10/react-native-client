@@ -48,9 +48,12 @@ const CustomCheckbox = (props: PropTypes) => {
   return (
     <SafeAreaView>
       <SimpleTouchableOpacity text={category} />
-      {goalDetails.map(v => {
+      {goalDetails.map((v, i) => {
         return (
-          <TouchableOpacity activeOpacity={1} style={styles.checkboxFrame}>
+          <TouchableOpacity
+            key={i}
+            activeOpacity={1}
+            style={styles.checkboxFrame}>
             <BouncyCheckbox
               style={styles.checkbox}
               size={25}
