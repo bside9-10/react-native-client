@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import styled from 'styled-components/native';
 import ModalView from '../ModalView';
 import SimpleTouchableOpacity from './SimpleTouchableOpacity';
 
@@ -31,6 +32,11 @@ const windowHeight = Dimensions.get('window').height;
 const CustomCheckbox = (props: PropTypes) => {
   const [modalVisible, setModalVisible] = useState(false);
 
+  const CategoryView = styled.View`
+    margin-bottom: 20px;
+    background-color: ${({theme}) => theme.colors.grey100};
+    border-radius: 20px;
+  `;
   const {
     categoryInfo,
     categoryInfo: {category, goalDetails},
@@ -46,8 +52,8 @@ const CustomCheckbox = (props: PropTypes) => {
   };
 
   return (
-    <SafeAreaView>
-      <SimpleTouchableOpacity text={category} />
+    <CategoryView>
+      <SimpleTouchableOpacity category={category} />
       {goalDetails.map((v, i) => {
         return (
           <TouchableOpacity
@@ -72,7 +78,7 @@ const CustomCheckbox = (props: PropTypes) => {
           </TouchableOpacity>
         );
       })}
-    </SafeAreaView>
+    </CategoryView>
   );
 };
 
