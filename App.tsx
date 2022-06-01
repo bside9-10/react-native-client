@@ -9,20 +9,24 @@
  */
 
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { NavigationContainer } from '@react-navigation/native';
+import {QueryClient, QueryClientProvider} from 'react-query';
+import {NavigationContainer} from '@react-navigation/native';
 import RootStack from './src/views/navigator/RootStack';
+import {ThemeProvider} from 'styled-components/native';
+import {theme} from './src/theme';
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <RootStack />
-      </NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <RootStack />
+        </NavigationContainer>
+      </ThemeProvider>
     </QueryClientProvider>
   );
-}
+};
 
 export default App;

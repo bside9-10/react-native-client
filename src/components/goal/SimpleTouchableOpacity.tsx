@@ -1,34 +1,35 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {SafeAreaView, Text, TouchableOpacity} from 'react-native';
+import {Image, SafeAreaView, Text} from 'react-native';
+import styled from 'styled-components/native';
 
 interface PropTypes {
   // eslint-disable-next-line react/require-default-props
   onPress?: () => void;
-  text: string;
+  category: string;
 }
 
 const SimpleTouchableOpacity = (props: PropTypes) => {
-  const {onPress, text} = props;
+  const {onPress, category} = props;
 
+  const StyledTouchableOpacity = styled.TouchableOpacity`
+    flex-direction: row;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 12px;
+    padding-right: 12px;
+    align-items: center;
+    /*justify-content: center; */
+  `;
   return (
     <SafeAreaView>
-      <TouchableOpacity
-        onPress={onPress}
-        style={{
-          backgroundColor: '#C4C4C4',
-          width: 300,
-          height: 33,
-          borderColor: 'black',
-          marginTop: 10,
-          marginLeft: 30,
-          borderRadius: 12,
-          borderWidth: 1.3,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Text> {text} </Text>
-      </TouchableOpacity>
+      <StyledTouchableOpacity onPress={onPress}>
+        <Image
+          source={require('../../../assets/images/todayLaffleCategory.png')}
+          resizeMode="contain"
+        />
+        <Text style={{marginLeft: 5}}> {category} </Text>
+      </StyledTouchableOpacity>
     </SafeAreaView>
   );
 };
