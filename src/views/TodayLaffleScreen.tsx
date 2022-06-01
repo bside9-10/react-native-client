@@ -9,32 +9,33 @@ import {
 } from 'react-native';
 import {useQuery} from 'react-query';
 import CustomCheckbox from '../components/goal/CustomCheckBox';
-import getTodayLaffle from '../helper/api/TodayLaffleAPI';
-import {
-  Calendar,
-  CalendarProvider,
-  ExpandableCalendar,
-  WeekCalendar,
-  CalendarProps,
-} from 'react-native-calendars';
+import {Calendar, CalendarProps} from 'react-native-calendars';
+import fetcher from '../utils/fetcher';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const INITIAL_DATE = '2022-04-15';
+const today = new Date().toISOString().split('T')[0];
 
 const TodayLaffleScreen = () => {
-  // console.log(windowHeight);
+  const [selected, setSelected] = useState(today);
 
-  const resultQuery = useQuery('getTodayLaffle', getTodayLaffle);
-
-  const [selected, setSelected] = useState(INITIAL_DATE);
   const onDayPress: CalendarProps['onDayPress'] = useCallback(day => {
     setSelected(day.dateString);
   }, []);
+
+  const {data: todayLaffle, isLoading} = useQuery(
+    ['getTodayLaffle', selected],
+    () =>
+      fetcher({
+        queryKey: `/api/v1/goals/2/today?date=${selected.replace(/-/gi, '')}`,
+      }),
+  );
+
   const marked = useMemo(() => {
     return {
       [selected]: {
+        marked: true,
         selected: true,
         disableTouchEvent: true,
         selectedColor: 'orange',
@@ -42,25 +43,25 @@ const TodayLaffleScreen = () => {
       },
     };
   }, [selected]);
-
-  const {data} = resultQuery;
+  // const marked = {
+  //   '2022-02-26': {selected: true},
+  //   '2022-02-27': {marked: true},
+  //   '2022-02-28': {marked: true},
+  // };
+  // const {data} = resultQuery;
+  // console.log('todayLaffle', todayLaffle);
   return (
     <SafeAreaView>
       <View>
-        {/* <View style={styles.calendarView}> */}
-        {/* <Fragment> */}
-        {/* <Text>Calendar with selectable date</Text> */}
-        <WeekCalendar
-          // testID={testIDs.calendars.FIRST}
+        <Calendar
           enableSwipeMonths
-          current={INITIAL_DATE}
+          current={today}
           onDayPress={onDayPress}
           markedDates={marked}
         />
-        {/* </Fragment> */}
-        {/* </View> */}
         <ScrollView style={styles.scrollView}>
-          {data?.data.response.map((v, i) => {
+          {todayLaffle?.response.map((v, i) => {
+            console.log(v);
             return <CustomCheckbox key={i} categoryInfo={v} />;
           })}
         </ScrollView>
@@ -79,9 +80,5 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
     // marginHorizontal: 10
-  },
-  calendarView: {
-    top: 60,
-    flex: 1,
   },
 });
