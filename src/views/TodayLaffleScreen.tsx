@@ -1,21 +1,58 @@
-import React, {Fragment, useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {
   StyleSheet,
   View,
   SafeAreaView,
   ScrollView,
   Dimensions,
-  Text,
 } from 'react-native';
 import {useQuery} from 'react-query';
 import CustomCheckbox from '../components/goal/CustomCheckBox';
 import {Calendar, CalendarProps} from 'react-native-calendars';
 import fetcher from '../utils/fetcher';
+import styled from 'styled-components/native';
+import {theme} from '../theme';
+import {LocaleConfig} from 'react-native-calendars';
+
+LocaleConfig.locales['ko'] = {
+  monthNames: [
+    '01월',
+    '02월',
+    '03월',
+    '04월',
+    '05월',
+    '06월',
+    '07월',
+    '08월',
+    '09월',
+    '10월',
+    '11월',
+    '12월',
+  ],
+
+  dayNames: [
+    '일요일',
+    '월요일',
+    '화요일',
+    '수요일',
+    '목요일',
+    '금요일',
+    '토요일',
+  ],
+  dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+  today: '오늘',
+};
+LocaleConfig.defaultLocale = 'ko';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const today = new Date().toISOString().split('T')[0];
+
+const TLView = styled.View`
+  background-color: ${({theme}) => theme.colors.dreamPurple300};
+  padding-top: 50px;
+`;
 
 const TodayLaffleScreen = () => {
   const [selected, setSelected] = useState(today);
@@ -35,11 +72,10 @@ const TodayLaffleScreen = () => {
   const marked = useMemo(() => {
     return {
       [selected]: {
-        marked: true,
         selected: true,
         disableTouchEvent: true,
-        selectedColor: 'orange',
-        selectedTextColor: 'red',
+        // selectedColor: 'orange',
+        // selectedTextColor: 'white',
       },
     };
   }, [selected]);
@@ -51,22 +87,55 @@ const TodayLaffleScreen = () => {
   // const {data} = resultQuery;
   // console.log('todayLaffle', todayLaffle);
   return (
-    <SafeAreaView>
-      <View>
-        <Calendar
-          enableSwipeMonths
-          current={today}
-          onDayPress={onDayPress}
-          markedDates={marked}
-        />
-        <ScrollView style={styles.scrollView}>
-          {todayLaffle?.response.map((v, i) => {
-            console.log(v);
-            return <CustomCheckbox key={i} categoryInfo={v} />;
-          })}
-        </ScrollView>
-      </View>
-    </SafeAreaView>
+    // <SafeAreaView>
+    <TLView>
+      {/* <TLSafeAreaView></TLSafeAreaView> */}
+      <Calendar
+        monthFormat={'yyyy년 MM월'}
+        firstDay={1}
+        enableSwipeMonths
+        current={today}
+        onDayPress={onDayPress}
+        markingType={'custom'}
+        markedDates={marked}
+        onMonthChange={month => {
+          console.log('month changed', month);
+        }}
+        theme={{
+          // backgroundColor: theme.colors.dreamPurple200,
+          calendarBackground: theme.colors.dreamPurple300,
+          textSectionTitleColor: theme.colors.grey300, // 요일 색
+          // textSectionTitleDisabledColor: 'yellow',
+          selectedDayBackgroundColor: theme.colors.dreamPurple400,
+          selectedDayTextColor: '#ffffff',
+          todayTextColor: '#00adf5',
+          dayTextColor: theme.colors.white,
+          textDisabledColor: theme.colors.grey400,
+          // dotColor: '#00adf5',
+          // selectedDotColor: '#ffffff',
+          arrowColor: 'orange',
+          // disabledArrowColor: '#d9e1e8',
+          monthTextColor: theme.colors.white,
+          // indicatorColor: 'blue',
+          // textDayFontFamily: 'monospace',
+          // textMonthFontFamily: 'monospace',
+          // textDayHeaderFontFamily: 'monospace',
+          // textDayFontWeight: '300',
+          textMonthFontWeight: 'bold',
+          textDayHeaderFontWeight: 'bold',
+          // textDayFontSize: 16,
+          // textMonthFontSize: 16,
+          // textDayHeaderFontSize: 14,
+        }}
+      />
+      <ScrollView style={styles.scrollView}>
+        {todayLaffle?.response.map((v, i) => {
+          console.log(v);
+          return <CustomCheckbox key={i} categoryInfo={v} />;
+        })}
+      </ScrollView>
+    </TLView>
+    // </SafeAreaView>
   );
 };
 
