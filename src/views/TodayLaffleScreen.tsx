@@ -130,7 +130,7 @@ const TodayLaffleScreen = () => {
       />
       <ScrollView style={styles.scrollView}>
         {todayLaffle?.response.map((v, i) => {
-          console.log(v);
+          // console.log(v);
           return <CustomCheckbox key={i} categoryInfo={v} />;
         })}
       </ScrollView>
@@ -148,6 +148,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
+    paddingHorizontal: 24,
+    paddingVertical: 46,
     // marginHorizontal: 10
   },
 });
