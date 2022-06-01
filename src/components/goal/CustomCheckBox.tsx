@@ -1,78 +1,102 @@
-import React, { useState } from 'react';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-import { TouchableOpacity , SafeAreaView, Text, StyleSheet, Dimensions } from 'react-native'
-import SimpleTouchableOpacity from './SimpleTouchableOpacity';
+import React, {useState} from 'react';
+import {
+  Dimensions,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import ModalView from '../ModalView';
+import SimpleTouchableOpacity from './SimpleTouchableOpacity';
 
-interface PropTypes { 
-  toDos: string;
-  date: string;
+interface PropTypes {
+  categoryInfo: {
+    category: string;
+    goalId: number;
+    goalDetails: [
+      {
+        goalDetailId: number;
+        title: string;
+        startTime: string;
+        goalDateStatusDesc: string;
+      },
+    ];
+  };
 }
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CustomCheckbox = (props : PropTypes) => { 
-  
+const CustomCheckbox = (props: PropTypes) => {
   const [modalVisible, setModalVisible] = useState(false);
-  
-  const { toDos, date } = props;
+
+  const {
+    categoryInfo,
+    categoryInfo: {category, goalDetails},
+  } = props;
 
   const onPress = () => {
-    console.log("press the menu button");
+    console.log('press the menu button');
     setModalVisible(true);
-  }
+  };
 
-  const onClose = () => { 
+  const onClose = () => {
     setModalVisible(false);
-  }
+  };
 
   return (
-    <SafeAreaView> 
-      {/* 카테고리 */}
-      <SimpleTouchableOpacity text="운동" />
-        {/* 체크박스 프레임 */}
-        <TouchableOpacity activeOpacity={1}
-          style={styles.checkboxFrame}>
-            {/* 체크박스 */}
+    <SafeAreaView>
+      <SimpleTouchableOpacity text={category} />
+      {goalDetails.map((v, i) => {
+        return (
+          <TouchableOpacity
+            key={i}
+            activeOpacity={1}
+            style={styles.checkboxFrame}>
             <BouncyCheckbox
-              style= {styles.checkbox}
+              style={styles.checkbox}
               size={25}
               fillColor="red"
               unfillColor="#FFFFFF"
-              text={toDos}
-              iconStyle={{ borderColor: "red" }}
-              onPress={(isChecked: boolean) => { console.log("ss") }}
+              text={v.title}
+              iconStyle={{borderColor: 'red'}}
+              onPress={(isChecked: boolean) => {
+                console.log('ss');
+              }}
             />
-            <Text style={styles.text}>{date}</Text>
-            {/* 메뉴 버튼 */}
-            <ModalView text="다음 날로 미루기 !" contents="d"/>
-        </TouchableOpacity>
-      </SafeAreaView>
+            <Text style={styles.text}>
+              {v.goalDateStatusDesc} / {v.startTime}
+            </Text>
+            <ModalView text="다음 날로 미루기 !" contents="d" />
+          </TouchableOpacity>
+        );
+      })}
+    </SafeAreaView>
   );
-}
+};
 
 export default CustomCheckbox;
 
 const styles = StyleSheet.create({
   checkboxFrame: {
-    backgroundColor : '#FFFFFF',
-    width: windowWidth-65,
+    backgroundColor: '#FFFFFF',
+    width: windowWidth - 65,
     height: 70,
     borderColor: 'black',
     marginTop: 10,
     marginLeft: 30,
-    paddingLeft : 20,
+    paddingLeft: 20,
     borderRadius: 18,
     borderWidth: 1,
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
   checkbox: {
-    paddingTop: 25
+    paddingTop: 25,
   },
   text: {
     color: '#000000',
-    paddingLeft: 40
-  }
+    paddingLeft: 40,
+  },
 });
