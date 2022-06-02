@@ -1,18 +1,11 @@
 import React, {useCallback, useMemo, useState} from 'react';
-import {
-  StyleSheet,
-  View,
-  SafeAreaView,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
+import {Dimensions, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import {Calendar, CalendarProps, LocaleConfig} from 'react-native-calendars';
 import {useQuery} from 'react-query';
-import CustomCheckbox from '../components/goal/CustomCheckBox';
-import {Calendar, CalendarProps} from 'react-native-calendars';
-import fetcher from '../utils/fetcher';
 import styled from 'styled-components/native';
+import CustomCheckbox from '../components/goal/CustomCheckBox';
 import {theme} from '../theme';
-import {LocaleConfig} from 'react-native-calendars';
+import fetcher from '../utils/fetcher';
 
 LocaleConfig.locales['ko'] = {
   monthNames: [
@@ -128,6 +121,7 @@ const TodayLaffleScreen = () => {
           // textDayHeaderFontSize: 14,
         }}
       />
+      {/* TODO : 스크롤 이슈 */}
       <ScrollView style={styles.scrollView}>
         {todayLaffle?.response.map((v, i) => {
           // console.log(v);

@@ -15,5 +15,6 @@ export const theme: DefaultTheme = {
     grey300: '#C8C8C8',
     grey400: '#989A9C',
     grey500: '#626363',
+    grey600: '#333333',
   },
 };

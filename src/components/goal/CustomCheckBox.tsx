@@ -5,9 +5,11 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import styled from 'styled-components/native';
+import {theme} from '../../theme';
 import ModalView from '../ModalView';
 import SimpleTouchableOpacity from './SimpleTouchableOpacity';
 
@@ -29,6 +31,10 @@ interface PropTypes {
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+const {
+  colors: {grey300, grey400, grey600},
+} = theme;
+
 const CustomCheckbox = (props: PropTypes) => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -36,7 +42,19 @@ const CustomCheckbox = (props: PropTypes) => {
     margin-bottom: 20px;
     background-color: ${({theme}) => theme.colors.grey100};
     border-radius: 20px;
+    padding-bottom: 20px;
   `;
+
+  const StyledCheckboxFrame = styled.TouchableOpacity`
+    background-color: ${({theme}) => theme.colors.white};
+    width: 90%;
+    margin: auto;
+    height: 70;
+    border-color: white;
+    padding-left: 20;
+    border-radius: 13;
+  `;
+
   const {
     categoryInfo,
     categoryInfo: {category, goalDetails},
@@ -53,20 +71,24 @@ const CustomCheckbox = (props: PropTypes) => {
 
   return (
     <CategoryView>
+      {/* 카테고리명 */}
       <SimpleTouchableOpacity category={category} />
+
       {goalDetails.map((v, i) => {
         return (
-          <TouchableOpacity
-            key={i}
-            activeOpacity={1}
-            style={styles.checkboxFrame}>
+          <StyledCheckboxFrame key={i} activeOpacity={1}>
             <BouncyCheckbox
               style={styles.checkbox}
-              size={25}
-              fillColor="red"
-              unfillColor="#FFFFFF"
+              fillColor={grey600}
               text={v.title}
-              iconStyle={{borderColor: 'red'}}
+              isChecked={true}
+              textStyle={{color: grey600}}
+              iconStyle={{
+                width: 17,
+                height: 17,
+                borderRadius: 4,
+                borderColor: grey600,
+              }}
               onPress={(isChecked: boolean) => {
                 console.log('ss');
               }}
@@ -74,8 +96,9 @@ const CustomCheckbox = (props: PropTypes) => {
             <Text style={styles.text}>
               {v.goalDateStatusDesc} / {v.startTime}
             </Text>
-            <ModalView text="다음 날로 미루기 !" contents="d" />
-          </TouchableOpacity>
+
+            {/* <ModalView text="다음 날로 미루기 !" contents="d" /> */}
+          </StyledCheckboxFrame>
         );
       })}
     </CategoryView>
@@ -85,24 +108,11 @@ const CustomCheckbox = (props: PropTypes) => {
 export default CustomCheckbox;
 
 const styles = StyleSheet.create({
-  checkboxFrame: {
-    backgroundColor: '#FFFFFF',
-    width: windowWidth - 65,
-    height: 70,
-    borderColor: 'black',
-    marginTop: 10,
-    marginLeft: 30,
-    paddingLeft: 20,
-    borderRadius: 18,
-    borderWidth: 1,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-  },
   checkbox: {
     paddingTop: 25,
   },
   text: {
-    color: '#000000',
+    color: grey400,
     paddingLeft: 40,
   },
 });
