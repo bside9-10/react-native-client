@@ -21,7 +21,6 @@ import rootReducer from './src/slices'
 
 const store = createStore(rootReducer);
 
-
 const queryClient = new QueryClient();
 
 const App = () => {

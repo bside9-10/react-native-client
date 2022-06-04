@@ -10,9 +10,26 @@ import { RootStackNavigationProp } from '../../views/navigator/RootStack';
 import appleButtonImage from '../../../assets/images/appleButton.png';
 import getAppleAuthResponse, { appleAuthRequest } from '../../helper/api/appleAuthAPI';
 import { RootState } from '../../slices';
-
 // const windowWidth = Dimensions.get('window').width;
 // const windowHeight = Dimensions.get('window').height;
+
+interface tokenType {
+  aud: string,
+  authTime: number,
+  cHash: string,
+  email: string,
+  emailVerified: string,
+  exp: number,
+  iat: number,
+  isPrivateEmail: string,
+  iss: string,
+  nonce: string,
+  nonceSupported: boolean,
+  sub: string
+}
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 interface tokenType {
   aud: string,
@@ -39,8 +56,6 @@ const AuthStatus = () => {
   );
 }
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const ButtonApple = () => {
   const navigation = useNavigation<RootStackNavigationProp>();
@@ -72,6 +87,7 @@ const ButtonApple = () => {
   //       requestedOperation: appleAuth.Operation.LOGIN,
   //       requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
   //       });
+
     
     // 로그인 완료 후 넘어가는 화면
     navigation.navigate('AvailableTimeScreen', { appleUser: appleAuthRequestResponse });
