@@ -11,17 +11,27 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import RootStack from './src/views/navigator/RootStack';
+// import { UserContextProvider } from './src/helper/context/UserContext';
+import rootReducer from './src/slices'
+
+const store = createStore(rootReducer);
 
 const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <RootStack />
-      </NavigationContainer>
-    </QueryClientProvider>
+    <Provider store={store}>
+      {/* <UserContextProvider> */}
+      <QueryClientProvider client={queryClient}>
+        <NavigationContainer>
+          <RootStack />
+        </NavigationContainer>
+      </QueryClientProvider>
+      {/* </UserContextProvider> */}
+    </Provider>
   );
 }
 
