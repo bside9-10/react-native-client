@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   Dimensions,
+  Image,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -37,7 +38,9 @@ const {
 
 const CustomCheckbox = (props: PropTypes) => {
   const [modalVisible, setModalVisible] = useState(false);
-
+  const pressTheModal = () => {
+    setModalVisible(true);
+  };
   const CategoryView = styled.View`
     margin-bottom: 20px;
     background-color: ${({theme}) => theme.colors.grey100};
@@ -49,10 +52,13 @@ const CustomCheckbox = (props: PropTypes) => {
     background-color: ${({theme}) => theme.colors.white};
     width: 90%;
     margin: auto;
-    height: 70;
+    margin-bottom: 4%;
+    height: 70px;
     border-color: white;
-    padding-left: 20;
-    border-radius: 13;
+    padding-left: 20px;
+    border-radius: 13px;
+    flex-direction: row;
+    justify-content: space-between;
   `;
 
   const {
@@ -77,27 +83,48 @@ const CustomCheckbox = (props: PropTypes) => {
       {goalDetails.map((v, i) => {
         return (
           <StyledCheckboxFrame key={i} activeOpacity={1}>
-            <BouncyCheckbox
-              style={styles.checkbox}
-              fillColor={grey600}
-              text={v.title}
-              isChecked={true}
-              textStyle={{color: grey600}}
-              iconStyle={{
-                width: 17,
-                height: 17,
-                borderRadius: 4,
-                borderColor: grey600,
-              }}
-              onPress={(isChecked: boolean) => {
-                console.log('ss');
-              }}
-            />
-            <Text style={styles.text}>
-              {v.goalDateStatusDesc} / {v.startTime}
-            </Text>
+            {/* 투두 */}
+            <View>
+              <BouncyCheckbox
+                style={styles.checkbox}
+                fillColor={grey600}
+                text={v.title}
+                textStyle={{
+                  fontFamily: 'LeeSeoyun',
+                  fontSize: 16,
+                  color: grey600,
+                }}
+                iconStyle={{
+                  width: 17,
+                  height: 17,
+                  borderRadius: 4,
+                  borderColor: grey600,
+                }}
+                onPress={(isChecked: boolean) => {
+                  console.log('ss');
+                }}
+              />
+              {/* 날짜 */}
+              <Text style={styles.text}>
+                {v.goalDateStatusDesc} / {v.startTime}
+              </Text>
+            </View>
 
-            {/* <ModalView text="다음 날로 미루기 !" contents="d" /> */}
+            {/* 내일로 미루기 기능 복구 예정! */}
+            {/* <TouchableOpacity
+              // style={styles.imageContainer}
+              onPress={pressTheModal}>
+              <Image
+                style={styles.image}
+                source={require('../../../assets/images/ellipsis.png')}
+              />
+            </TouchableOpacity> */}
+            <ModalView
+              modalVisible={modalVisible}
+              setModalVisible={setModalVisible}
+              text="다음으로 미루기"
+              contents="d"
+            />
           </StyledCheckboxFrame>
         );
       })}
@@ -109,10 +136,15 @@ export default CustomCheckbox;
 
 const styles = StyleSheet.create({
   checkbox: {
-    paddingTop: 25,
+    paddingTop: 20,
+    // padding: 20,
   },
   text: {
     color: grey400,
-    paddingLeft: 40,
+    paddingLeft: 32,
+    marginTop: 5,
+    fontSize: 10,
   },
+  imageContainer: {right: -100, bottom: -20},
+  image: {width: 23, height: 23},
 });

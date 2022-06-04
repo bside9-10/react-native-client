@@ -7,6 +7,21 @@ import CustomCheckbox from '../components/goal/CustomCheckBox';
 import {theme} from '../theme';
 import fetcher from '../utils/fetcher';
 
+const {
+  colors: {
+    grey100,
+    grey200,
+    grey300,
+    grey400,
+    grey500,
+    grey600,
+    dreamPurple100,
+    dreamPurple200,
+    dreamPurple300,
+    dreamPurple400,
+    white,
+  },
+} = theme;
 LocaleConfig.locales['ko'] = {
   monthNames: [
     '01월',
@@ -61,6 +76,9 @@ const TodayLaffleScreen = () => {
         queryKey: `/api/v1/goals/2/today?date=${selected.replace(/-/gi, '')}`,
       }),
   );
+  const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
+  const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
+  const workout = {key: 'workout', color: 'green'};
 
   const marked = useMemo(() => {
     return {
@@ -70,12 +88,32 @@ const TodayLaffleScreen = () => {
         // selectedColor: 'orange',
         // selectedTextColor: 'white',
       },
+
+      '2022-06-02': {selected: true, marked: true},
+      '2022-06-03': {marked: true},
+      '2022-06-04': {marked: true},
+      '2022-06-05': {marked: true},
+      '2022-06-07': {marked: true},
+      '2022-06-09': {marked: true},
+      '2022-06-11': {marked: true},
+      '2022-06-15': {marked: true},
+      '2022-06-17': {marked: true},
+      '2022-06-13': {marked: true},
+
+      // '2022-06-26': {selected: true},
+      '2022-06-27': {marked: true},
+      '2022-06-28': {marked: true},
     };
   }, [selected]);
   // const marked = {
-  //   '2022-02-26': {selected: true},
-  //   '2022-02-27': {marked: true},
-  //   '2022-02-28': {marked: true},
+  //   '2022-06-02': {selected: true, marked: true},
+  //   '2022-06-03': {marked: true},
+  //   '2022-06-04': {marked: true},
+  //   '2022-06-05': {marked: true},
+
+  //   // '2022-06-26': {selected: true},
+  //   '2022-06-27': {marked: true},
+  //   '2022-06-28': {marked: true},
   // };
   // const {data} = resultQuery;
   // console.log('todayLaffle', todayLaffle);
@@ -96,19 +134,19 @@ const TodayLaffleScreen = () => {
         }}
         theme={{
           // backgroundColor: theme.colors.dreamPurple200,
-          calendarBackground: theme.colors.dreamPurple300,
-          textSectionTitleColor: theme.colors.grey300, // 요일 색
+          calendarBackground: dreamPurple300,
+          textSectionTitleColor: grey300, // 요일 색
           // textSectionTitleDisabledColor: 'yellow',
-          selectedDayBackgroundColor: theme.colors.dreamPurple400,
+          selectedDayBackgroundColor: dreamPurple400,
           selectedDayTextColor: '#ffffff',
-          todayTextColor: '#00adf5',
-          dayTextColor: theme.colors.white,
-          textDisabledColor: theme.colors.grey400,
-          // dotColor: '#00adf5',
+          todayTextColor: white,
+          dayTextColor: white,
+          textDisabledColor: grey400,
+          dotColor: white,
           // selectedDotColor: '#ffffff',
-          arrowColor: 'orange',
+          arrowColor: '#AECFFF',
           // disabledArrowColor: '#d9e1e8',
-          monthTextColor: theme.colors.white,
+          monthTextColor: white,
           // indicatorColor: 'blue',
           // textDayFontFamily: 'monospace',
           // textMonthFontFamily: 'monospace',
@@ -144,6 +182,5 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 45,
     paddingHorizontal: 24,
     paddingVertical: 46,
-    // marginHorizontal: 10
   },
 });
