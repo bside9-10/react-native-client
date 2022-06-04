@@ -22,7 +22,8 @@ type RootStackParamList = {
     GoalScreen: undefined;
     LoginScreen: undefined;
     MainTab: undefined;
-    OnboardingScreen : undefined;
+    OnboardingScreen: undefined;
+    AvailableTimeScreen: { appleUser: AppleRequestResponse };
     ProfileScreen: { userProfile: KakaoProfile };
     ProfileScreen2: { userProfile2: AppleRequestResponse };
     ProfileScreen3: { userProfile3 : any};
@@ -128,7 +129,9 @@ const RootStack = () => {
     return (
             // <Stack.Navigator initialRouteName='MainTab'>
             // <Stack.Navigator initialRouteName='LoginScreen'>
-            <Stack.Navigator initialRouteName='OnboardingScreen'>
+            // screenOptions={{headerBackTitle='닫기'}}
+        <Stack.Navigator 
+            initialRouteName='OnboardingScreen'>
                 {/* TODO : 화면 추가 */}
                 <Stack.Screen
                     name='MainTab'

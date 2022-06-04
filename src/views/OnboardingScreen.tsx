@@ -1,7 +1,7 @@
 import { Dimensions, Image, Text, TouchableOpacity, View } from 'react-native';
-import React from 'react';
+import React, { useRef } from 'react';
 import Onboarding from 'react-native-onboarding-swiper';
-import image from '../../assets/images/nextButtonOff.png';
+import btnOff from '../../assets/images/nextButtonOff.png';
 import character1 from '../../assets/images/character_set1.png';
 import character2 from '../../assets/images/character_set2.png';
 import character3 from '../../assets/images/character_set3.png';
@@ -37,29 +37,34 @@ const DoneButton = () => (
     </TouchableOpacity>
 );
 
-const NextButton = () => (
+const NextButton = ({ ...props}) => (
     <TouchableOpacity style={{paddingTop: 100, paddingRight: 30}}>
-        <Image source={image} />
+        <Image source={btnOff} { ...props}/>
+        
     </TouchableOpacity>
 );
 
-const SkipButton = () => (
+const SkipButton = ({ ...props}) => (
     <TouchableOpacity style={{paddingBottom: 30, paddingLeft: 30}}>
-        <Image source={btnOn} />
-        {/* <Text>SKIP</Text> */}
+        <Image source={btnOn} { ...props}/>
     </TouchableOpacity>
 );
+
+// const onboardingRef = useRef<Onboarding>(null);
 
 const OnboardingScreen = () => {
     return (
         <Onboarding
+            // ref={onboardingRef}
+            // pages={pages}
             onDone={() => console.log('done')}
+            onSkip={() => console.log('skip')}
             DoneButtonComponent={DoneButton}
+            NextButtonComponent={NextButton}
+            SkipButtonComponent={SkipButton}
             // showNext={false}
             // showSkip={false}
             bottomBarHeight={250}
-            NextButtonComponent={NextButton}
-            SkipButtonComponent={SkipButton}
             DotComponent={DotButton}
             titleStyles={{ color: 'blue' ,top: DEVICE_HEIGHT/5 * -1}} // set default color for the title
             bottomBarHighlight={false}
