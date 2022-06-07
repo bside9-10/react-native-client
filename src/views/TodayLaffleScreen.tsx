@@ -1,7 +1,16 @@
 import React, {useCallback, useMemo, useState} from 'react';
-import {Dimensions, SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import {
+  Dimensions,
+  RecyclerViewBackedScrollViewBase,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+} from 'react-native';
 import {Calendar, CalendarProps, LocaleConfig} from 'react-native-calendars';
-import {useQuery} from 'react-query';
+import {useQueries, useQuery} from 'react-query';
 import styled from 'styled-components/native';
 import CustomCheckbox from '../components/goal/CustomCheckBox';
 import {theme} from '../theme';
@@ -22,6 +31,7 @@ const {
     white,
   },
 } = theme;
+
 LocaleConfig.locales['ko'] = {
   monthNames: [
     '01월',
@@ -60,67 +70,128 @@ const today = new Date().toISOString().split('T')[0];
 const TLView = styled.View`
   background-color: ${({theme}) => theme.colors.dreamPurple300};
   padding-top: 50px;
+  /* flex: 1; */
+`;
+const NoData = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-top: 20;
 `;
 
 const TodayLaffleScreen = () => {
   const [selected, setSelected] = useState(today);
+  const [month, setMonth] = useState(today);
 
   const onDayPress: CalendarProps['onDayPress'] = useCallback(day => {
     setSelected(day.dateString);
   }, []);
 
-  const {data: todayLaffle, isLoading} = useQuery(
-    ['getTodayLaffle', selected],
+  // const result = useQueries([
+  //   {
+  //     queryKey: ['getMonthlyData', month],
+  //     queryFn: () =>
+  //       fetcher({
+  //         queryKey: `/api/v1/goals/2/today/stamp?month=${month.replace(
+  //           /-/gi,
+  //           '',
+  //         )}`,
+  //       }),
+  //   },
+  //   {
+  //     queryKey: ['getTodayLaffle', selected],
+  //     queryFn: () =>
+  //       fetcher({
+  //         queryKey: `/api/v1/goals/2/today?date=${selected.replace(/-/gi, '')}`,
+  //       }),
+  //   },
+  // ]);
+
+  // console.warn(result);
+  // const monthlyData = result && result[0].data.response;
+  // console.log('monthlyData', monthlyData);
+
+  const {data: monthlyData, isLoading} = useQuery(
+    ['getMonthlyData', month],
     () =>
       fetcher({
-        queryKey: `/api/v1/goals/2/today?date=${selected.replace(/-/gi, '')}`,
+        queryKey: `/api/v1/goals/2/today/stamp?month=${month.replace(
+          /-/gi,
+          '',
+        )}`,
       }),
   );
-  const vacation = {key: 'vacation', color: 'red', selectedDotColor: 'blue'};
-  const massage = {key: 'massage', color: 'blue', selectedDotColor: 'blue'};
-  const workout = {key: 'workout', color: 'green'};
 
-  const marked = useMemo(() => {
-    return {
-      [selected]: {
-        selected: true,
-        disableTouchEvent: true,
-        // selectedColor: 'orange',
-        // selectedTextColor: 'white',
-      },
+  const {data: todayLaffle} = useQuery(['getTodayLaffle', selected], () =>
+    fetcher({
+      queryKey: `/api/v1/goals/2/today?date=${selected.replace(/-/gi, '')}`,
+    }),
+  );
 
-      '2022-06-02': {selected: true, marked: true},
-      '2022-06-03': {marked: true},
-      '2022-06-04': {marked: true},
-      '2022-06-05': {marked: true},
-      '2022-06-07': {marked: true},
-      '2022-06-09': {marked: true},
-      '2022-06-11': {marked: true},
-      '2022-06-15': {marked: true},
-      '2022-06-17': {marked: true},
-      '2022-06-13': {marked: true},
+  interface IMonthlyData {
+    goalDate: string;
+  }
 
-      // '2022-06-26': {selected: true},
-      '2022-06-27': {marked: true},
-      '2022-06-28': {marked: true},
-    };
-  }, [selected]);
-  // const marked = {
-  //   '2022-06-02': {selected: true, marked: true},
-  //   '2022-06-03': {marked: true},
-  //   '2022-06-04': {marked: true},
-  //   '2022-06-05': {marked: true},
+  interface IDailyMark {
+    goalDate: string;
+  }
 
-  //   // '2022-06-26': {selected: true},
-  //   '2022-06-27': {marked: true},
-  //   '2022-06-28': {marked: true},
-  // };
-  // const {data} = resultQuery;
+  let dailyMark: {[key: string]: any} = {};
+
+  monthlyData?.response.forEach((value: IMonthlyData, i: number) => {
+    const date = value.goalDate;
+    dailyMark[date] = {marked: true};
+  });
+
+  let selectedMark: {[key: string]: any} = {};
+  selectedMark[selected] = {selected: true};
+  const marked = {
+    ...selectedMark,
+    ...dailyMark,
+  };
+
+  // const marked = useMemo(
+  //   (...dailyMark) => {
+  //     return {
+  //       dailyMark,
+  //       [selected]: {
+  //         selected: true,
+  //         disableTouchEvent: true,
+  //       },
+  //     };
+  //   },
+  //   [selected],
+  // );
+
+  // const marked = useMemo(() => {
+  //   return {
+  //     ...dailyMark,
+  //     [selected]: {
+  //       selected: true,
+  //       disableTouchEvent: true,
+  //       // selectedColor: 'orange',
+  //       // selectedTextColor: 'white',
+  //     },
+  //     // '2022-06-02': {selected: true},
+  //     // '2022-06-02': {marked: true},
+  //     // '2022-06-05': {marked: true},
+  //     // '2022-06-07': {marked: true},
+  //     // '2022-06-09': {marked: true},
+  //     // '2022-06-11': {marked: true},
+  //     // '2022-06-15': {marked: true},
+  //     // '2022-06-17': {marked: true},
+  //     // '2022-06-13': {marked: true},
+  //     // '2022-06-26': {selected: true},
+  //     // '2022-06-27': {marked: true},
+  //     // '2022-06-28': {marked: true},
+  //   };
+  // }, [selected]);
+
+  // // const {data} = resultQuery;
   // console.log('todayLaffle', todayLaffle);
+
   return (
-    // <SafeAreaView>
-    <TLView>
-      {/* <TLSafeAreaView></TLSafeAreaView> */}
+    // <SafeAreaView style={styles.container}>
+    <TLView style={styles.container}>
       <Calendar
         monthFormat={'yyyy년 MM월'}
         firstDay={1}
@@ -129,8 +200,9 @@ const TodayLaffleScreen = () => {
         onDayPress={onDayPress}
         markingType={'custom'}
         markedDates={marked}
-        onMonthChange={month => {
-          console.log('month changed', month);
+        onMonthChange={currentMonth => {
+          // console.warn('month changed', currentMonth);
+          setMonth(currentMonth.dateString);
         }}
         theme={{
           // backgroundColor: theme.colors.dreamPurple200,
@@ -160,11 +232,25 @@ const TodayLaffleScreen = () => {
         }}
       />
       {/* TODO : 스크롤 이슈 */}
-      <ScrollView style={styles.scrollView}>
-        {todayLaffle?.response.map((v, i) => {
-          // console.log(v);
-          return <CustomCheckbox key={i} categoryInfo={v} />;
-        })}
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={{paddingBottom: 60}}>
+        {todayLaffle?.response.flag ? (
+          todayLaffle.response.data.map(
+            (v, i) =>
+              v.goalDetails.length !== 0 && (
+                <CustomCheckbox key={i} categoryInfo={v} />
+              ),
+          )
+        ) : (
+          <NoData>
+            <Image
+              style={styles.image}
+              source={require('../../assets/images/character5_surfing.png')}
+            />
+            <Text>오늘은 자유</Text>
+          </NoData>
+        )}
       </ScrollView>
     </TLView>
     // </SafeAreaView>
@@ -176,11 +262,16 @@ export default TodayLaffleScreen;
 const styles = StyleSheet.create({
   scrollView: {
     top: 20,
-    height: windowHeight,
+    // height: windowHeight,
     backgroundColor: 'white',
     borderTopLeftRadius: 45,
     borderTopRightRadius: 45,
     paddingHorizontal: 24,
-    paddingVertical: 46,
+    paddingTop: 46,
+    paddingBottom: 30,
   },
+  container: {
+    flex: 1,
+  },
+  image: {width: 150, height: 150},
 });
