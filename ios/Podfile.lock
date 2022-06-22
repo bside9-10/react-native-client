@@ -341,7 +341,7 @@ PODS:
     - React-perflogger (= 0.67.3)
   - RNAppleAuthentication (2.1.5):
     - React-Core
-  - RNCAsyncStorage (1.17.0):
+  - RNCAsyncStorage (1.17.5):
     - React-Core
   - RNGestureHandler (2.4.0):
     - React-Core
@@ -581,7 +581,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: af1946623656f9c5fd64ca6f36f3863516193446
   ReactCommon: 650e33cde4fb7d36781cd3143f5276da0abb2f96
   RNAppleAuthentication: 63c2127ace11985b94f852fc480eb84145653712
-  RNCAsyncStorage: 4efdcd2f7378421b29467c9de58f43552b60cf5b
+  RNCAsyncStorage: 81187912cc9a5c2591ddb161e03e587688afb764
   RNGestureHandler: 50e6ffee79932d14ea747d4ea4cc99aac0f24e86
   RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
   RNReanimated: 96ab42cfb0e5517293499e0f3f810420eb459f75
