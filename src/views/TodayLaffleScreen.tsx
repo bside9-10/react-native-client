@@ -7,14 +7,13 @@ import {
   Dimensions,
 } from 'react-native';
 import {useQuery} from 'react-query';
-import CustomCheckbox from '../components/goal/CustomCheckBox';
-import {Calendar, CalendarProps} from 'react-native-calendars';
-import fetcher from '../utils/fetcher';
 import styled from 'styled-components/native';
+import {Calendar, CalendarProps,LocaleConfig} from 'react-native-calendars';
+import CustomCheckbox from '../components/goal/CustomCheckBox';
+import fetcher from '../utils/fetcher';
 import {theme} from '../theme';
-import {LocaleConfig} from 'react-native-calendars';
 
-LocaleConfig.locales['ko'] = {
+LocaleConfig.locales.ko = {
   monthNames: [
     '01월',
     '02월',
@@ -91,12 +90,12 @@ const TodayLaffleScreen = () => {
     <TLView>
       {/* <TLSafeAreaView></TLSafeAreaView> */}
       <Calendar
-        monthFormat={'yyyy년 MM월'}
+        monthFormat="yyyy년 MM월"
         firstDay={1}
         enableSwipeMonths
         current={today}
         onDayPress={onDayPress}
-        markingType={'custom'}
+        markingType="custom"
         markedDates={marked}
         onMonthChange={month => {
           console.log('month changed', month);
@@ -129,8 +128,9 @@ const TodayLaffleScreen = () => {
         }}
       />
       <ScrollView style={styles.scrollView}>
-        {todayLaffle?.response.map((v, i) => {
+        {todayLaffle?.response.map((v : any, i : any) => {
           // console.log(v);
+          // eslint-disable-next-line react/no-array-index-key
           return <CustomCheckbox key={i} categoryInfo={v} />;
         })}
       </ScrollView>
